@@ -76,10 +76,12 @@ The report shows output(in term of TPS, transaction per second), ROI (TPS/month-
 
 ### Can I repeat the benchmark analysis, are you open source? 我可以重复基准分析吗？你们是开源的吗？
 
-Currently, github.com/nidmgh/sysbenchCloudDB, will be replaced with repo of NineData.
 
-YES. Although DBench does not cover all variants, the methodology, documents and most importantly, the scripts with instruction can be found at GitHub with Apache 2.0. 
-是的。尽管 DBench 没有涵盖所有变体，但方法论、文档以及带有说明的脚本可以在 GitHub 上找到，采用的许可证为 Apache 2.0。
+
+YES. https://github.com/data9z/DBench
+
+Although DBench does not cover all variants, the methodology, documents and most importantly, the scripts with instruction can be found at GitHub with Apache 2.0. 
+是的。尽管 DBench 没有涵盖所有变体，但方法论、文档以及带有说明的脚本可以在 https://github.com/data9z/DBench 公开，并且采用的开放类许可证 Apache 2.0。
 
 To develop a customized benchmark to march a particular workload, please contact us at support@ninedata.cloud.  要开发一个定制的基准测试以匹配特定的工作负载，请通过 support@ninedata.cloud 与我们联系。
 
