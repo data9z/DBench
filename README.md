@@ -31,6 +31,8 @@ We put our best effort to automate the whole benchmark system. With the terrafor
 
 For users who like to examine the past results or further analyze the data, the raw data is available in the raw data folder of this repo. 
 
+Please ref to <a href="https://github.com/data9z/DBench/docs/quickstart.md"> quickstart </a> for the simple steps. 
+
 ## Limitation
 
 Same as any benchmark of any scenario, the simulation is not equal to real life result. Currently, DBench is using  <a href="https://en.wikipedia.org/wiki/Sysbench">sysbench</a> , an open-source tool and its OLTP testcase. This is a relatively simple one comparing to the ones from Transaction Processing Performance Council (TPC). 
