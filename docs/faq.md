@@ -40,11 +40,12 @@ In the initial stage, the DBench will focus  on OLTP workload: Sysbench (https:/
 
 TPC-C (https://tpc.org/） and  customized benchmark  are under development)。 TPC-C 和自定义基准测试正在开发中。
 
-### Which cloud providers Benchmark Cloud Database (DBench) test?
+### Which cloud providers Benchmark Cloud Database (DBench) test? DBench支持哪些云厂商？
 
-Currently, we support the following providers: AWS, Alibaba, GCP, Huawei, Tencent. 
+Currently, we support the following providers: AWS, Alibaba, GCP, Huawei, Tencent. DBench现在支持亚马逊，阿里，谷歌，华为，腾讯。
 
-DBench 测试的云提供商可能包括市场上主要的云服务提供商，例如 Amazon Web Services (AWS)、Microsoft Azure、Google Cloud Platform (GCP)、阿里云（Alibaba Cloud）和腾讯云（Tencent Cloud）。这些云平台广泛被全球的企业和开发者使用，因此它们是进行云数据库性能和成本效益比较的重要对象。请注意，DBench 可能会随时间扩展或更改其测试的云提供商列表，以反映市场趋势和用户需求的变化。
+
+Please note that DBench may expand or change the list of cloud providers it tests over time to reflect changes in market trends and user needs. 请注意，DBench 可能会随时间扩展或更改其测试的云提供商列表，以反映市场趋势和用户需求的变化。
 
 	
 ### Which database configurations does DBench choose? DBench 选择哪些数据库配置？
