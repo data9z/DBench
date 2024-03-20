@@ -1,0 +1,11 @@
+region = "ap-southeast-1"
+zone = "ap-southeast-1b"
+slave_zone = "ap-southeast-1c"
+db_instance_type = "pg.n2.4c.2m"
+db_disk_size = 100
+db_disk_type = "cloud_essd"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+db_category = "HighAvailability"
+cores = "4.0"
+memory = "2.0"

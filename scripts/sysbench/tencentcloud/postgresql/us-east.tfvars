@@ -1,0 +1,12 @@
+region = "na-ashburn"
+zone = "na-ashburn-1"
+slave_zone = "na-ashburn-1"
+db_cpu = 4
+db_mem_size = 8
+db_disk_size = 100
+db_user = "sbtest"
+db_pwd = "DBPassword@123"
+key_name = "us_east"
+instance_type = "SA5.LARGE8"
+instance_disk_type = "CLOUD_BSSD"
+public_key = "../../../image/authorized_keys"

@@ -1,0 +1,1083 @@
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # huaweicloud_compute_instance.instance will be created
+  + resource "huaweicloud_compute_instance" "instance" {
+      + access_ip_v4              = (known after apply)
+      + access_ip_v6              = (known after apply)
+      + agency_name               = (known after apply)
+      + agent_list                = (known after apply)
+      + availability_zone         = "ap-southeast-1a"
+      + charging_mode             = "postPaid"
+      + created_at                = (known after apply)
+      + delete_eip_on_termination = true
+      + description               = (known after apply)
+      + eip_type                  = "5_bgp"
+      + enterprise_project_id     = (known after apply)
+      + flavor_id                 = "s3.xlarge.2"
+      + flavor_name               = (known after apply)
+      + hostname                  = (known after apply)
+      + id                        = (known after apply)
+      + image_id                  = (known after apply)
+      + image_name                = "CentOS 7.9 64bit"
+      + key_pair                  = "sysbench"
+      + name                      = "sysbench"
+      + power_action              = (known after apply)
+      + public_ip                 = (known after apply)
+      + region                    = (known after apply)
+      + security_group_ids        = [
+          + "e5301fb3-16c6-47e0-a484-044a0cbe8653",
+        ]
+      + security_groups           = (known after apply)
+      + spot_duration_count       = (known after apply)
+      + status                    = (known after apply)
+      + stop_before_destroy       = false
+      + system_disk_id            = (known after apply)
+      + system_disk_iops          = (known after apply)
+      + system_disk_kms_key_id    = (known after apply)
+      + system_disk_size          = 40
+      + system_disk_throughput    = (known after apply)
+      + system_disk_type          = "SAS"
+      + updated_at                = (known after apply)
+      + volume_attached           = (known after apply)
+
+      + bandwidth {
+          + charge_mode = "traffic"
+          + share_type  = "PER"
+          + size        = 10
+        }
+
+      + network {
+          + access_network    = false
+          + fixed_ip_v4       = (known after apply)
+          + fixed_ip_v6       = (known after apply)
+          + mac               = (known after apply)
+          + port              = (known after apply)
+          + source_dest_check = true
+          + uuid              = "7075f6b2-123c-4978-97b9-e2cd47224b60"
+        }
+    }
+
+  # huaweicloud_rds_instance.rds will be created
+  + resource "huaweicloud_rds_instance" "rds" {
+      + availability_zone     = [
+          + "ap-southeast-1a",
+          + "ap-southeast-1a",
+        ]
+      + charging_mode         = "postPaid"
+      + collation             = (known after apply)
+      + created               = (known after apply)
+      + enterprise_project_id = (known after apply)
+      + fixed_ip              = (known after apply)
+      + flavor                = "rds.pg.n1.xlarge.2.ha"
+      + ha_replication_mode   = "async"
+      + id                    = (known after apply)
+      + maintain_begin        = (known after apply)
+      + maintain_end          = (known after apply)
+      + name                  = "sysbench"
+      + nodes                 = (known after apply)
+      + private_ips           = (known after apply)
+      + public_ips            = (known after apply)
+      + region                = (known after apply)
+      + security_group_id     = "e5301fb3-16c6-47e0-a484-044a0cbe8653"
+      + status                = (known after apply)
+      + subnet_id             = "7075f6b2-123c-4978-97b9-e2cd47224b60"
+      + switch_strategy       = (known after apply)
+      + time_zone             = (known after apply)
+      + vpc_id                = "2e84d0b3-0020-4c19-961d-6e901d1b136f"
+
+      + db {
+          + password  = (sensitive value)
+          + port      = (known after apply)
+          + type      = "PostgreSQL"
+          + user_name = (known after apply)
+          + version   = "15"
+        }
+
+      + volume {
+          + disk_encryption_id = (known after apply)
+          + size               = 100
+          + type               = "CLOUDSSD"
+        }
+    }
+
+  # huaweicloud_rds_pg_database.database will be created
+  + resource "huaweicloud_rds_pg_database" "database" {
+      + character_set              = "UTF8"
+      + id                         = (known after apply)
+      + instance_id                = (known after apply)
+      + is_revoke_public_privilege = (known after apply)
+      + lc_collate                 = (known after apply)
+      + lc_ctype                   = (known after apply)
+      + name                       = "sbtest"
+      + owner                      = (known after apply)
+      + region                     = (known after apply)
+      + size                       = (known after apply)
+      + template                   = (known after apply)
+    }
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + host      = (known after apply)
+  + url       = (known after apply)
+huaweicloud_rds_instance.rds: Creating...
+huaweicloud_rds_instance.rds: Still creating... [10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [50s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [1m0s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [1m10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [1m20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [1m30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [1m40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [1m50s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [2m0s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [2m10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [2m20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [2m30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [2m40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [2m50s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [3m0s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [3m10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [3m20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [3m30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [3m40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [3m50s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [4m0s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [4m10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [4m20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [4m30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [4m40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [4m50s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [5m0s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [5m10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [5m20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [5m30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [5m40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [5m50s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [6m0s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [6m10s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [6m20s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [6m30s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [6m40s elapsed]
+huaweicloud_rds_instance.rds: Still creating... [6m50s elapsed]
+huaweicloud_rds_instance.rds: Creation complete after 6m59s [id=b65a536dc2e540cd9059089f6201e13ain03]
+huaweicloud_rds_pg_database.database: Creating...
+huaweicloud_rds_pg_database.database: Creation complete after 2s [id=b65a536dc2e540cd9059089f6201e13ain03/sbtest]
+huaweicloud_compute_instance.instance: Creating...
+huaweicloud_compute_instance.instance: Still creating... [10s elapsed]
+huaweicloud_compute_instance.instance: Still creating... [20s elapsed]
+huaweicloud_compute_instance.instance: Still creating... [30s elapsed]
+huaweicloud_compute_instance.instance: Still creating... [40s elapsed]
+huaweicloud_compute_instance.instance: Still creating... [50s elapsed]
+huaweicloud_compute_instance.instance: Still creating... [1m0s elapsed]
+huaweicloud_compute_instance.instance: Creation complete after 1m4s [id=a3a514b9-56d1-4271-b79b-4d4b18ec4140]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+container = false
+database = "huaweicloud_rds_mysql_database.database"
+db_port = 5432
+db_pwd = "DBPassword123"
+db_user = "root"
+host = "119.8.57.154"
+url = "192.168.0.58"
+user = "root"
+wait os start...
+if which sysbench > /dev/null 2>&1 ; then echo 'sysbench exists'; else curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.rpm.sh | sudo bash && sudo yum -y install sysbench; fi
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+Detected operating system as centos/7.
+Checking for curl...
+Detected curl...
+Downloading repository file: https://packagecloud.io/install/repositories/akopytov/sysbench/config_file.repo?os=centos&dist=7&source=script
+done.
+Installing pygpgme to verify GPG signatures...
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+Retrieving key from https://packagecloud.io/akopytov/sysbench/gpgkey
+Importing GPG key 0x04DCFD39:
+ Userid     : "https://packagecloud.io/akopytov/sysbench-prerelease (https://packagecloud.io/docs#gpg_signing) <support@packagecloud.io>"
+ Fingerprint: 9789 8d69 f99e e5ca c462 a0f8 cf10 4890 04dc fd39
+ From       : https://packagecloud.io/akopytov/sysbench/gpgkey
+Package pygpgme-0.3-9.el7.x86_64 already installed and latest version
+Nothing to do
+Installing yum-utils...
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Resolving Dependencies
+--> Running transaction check
+---> Package yum-utils.noarch 0:1.1.31-54.el7_8 will be installed
+--> Processing Dependency: python-kitchen for package: yum-utils-1.1.31-54.el7_8.noarch
+--> Running transaction check
+---> Package python-kitchen.noarch 0:1.1.1-5.el7 will be installed
+--> Processing Dependency: python-chardet for package: python-kitchen-1.1.1-5.el7.noarch
+--> Running transaction check
+---> Package python-chardet.noarch 0:2.2.1-3.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package               Arch          Version                  Repository   Size
+================================================================================
+Installing:
+ yum-utils             noarch        1.1.31-54.el7_8          base        122 k
+Installing for dependencies:
+ python-chardet        noarch        2.2.1-3.el7              base        227 k
+ python-kitchen        noarch        1.1.1-5.el7              base        267 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+2 Dependent packages)
+
+Total download size: 616 k
+Installed size: 2.8 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              2.5 MB/s | 616 kB  00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : python-chardet-2.2.1-3.el7.noarch                            1/3
+  Installing : python-kitchen-1.1.1-5.el7.noarch                            2/3
+  Installing : yum-utils-1.1.31-54.el7_8.noarch                             3/3
+  Verifying  : python-kitchen-1.1.1-5.el7.noarch                            1/3
+  Verifying  : yum-utils-1.1.31-54.el7_8.noarch                             2/3
+  Verifying  : python-chardet-2.2.1-3.el7.noarch                            3/3
+
+Installed:
+  yum-utils.noarch 0:1.1.31-54.el7_8
+
+Dependency Installed:
+  python-chardet.noarch 0:2.2.1-3.el7    python-kitchen.noarch 0:1.1.1-5.el7
+
+Complete!
+Generating yum cache for akopytov_sysbench...
+Importing GPG key 0x04DCFD39:
+ Userid     : "https://packagecloud.io/akopytov/sysbench-prerelease (https://packagecloud.io/docs#gpg_signing) <support@packagecloud.io>"
+ Fingerprint: 9789 8d69 f99e e5ca c462 a0f8 cf10 4890 04dc fd39
+ From       : https://packagecloud.io/akopytov/sysbench/gpgkey
+Generating yum cache for akopytov_sysbench-source...
+
+The repository is setup! You can now install packages.
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Resolving Dependencies
+--> Running transaction check
+---> Package sysbench.x86_64 0:1.0.20-1.el7 will be installed
+--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: sysbench-1.0.20-1.el7.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: sysbench-1.0.20-1.el7.x86_64
+--> Processing Dependency: libpq.so.5()(64bit) for package: sysbench-1.0.20-1.el7.x86_64
+--> Processing Dependency: libaio.so.1()(64bit) for package: sysbench-1.0.20-1.el7.x86_64
+--> Running transaction check
+---> Package libaio.x86_64 0:0.3.109-13.el7 will be installed
+---> Package postgresql-libs.x86_64 0:9.2.24-9.el7_9 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package             Arch       Version             Repository             Size
+================================================================================
+Installing:
+ sysbench            x86_64     1.0.20-1.el7        akopytov_sysbench     430 k
+Installing for dependencies:
+ libaio              x86_64     0.3.109-13.el7      base                   24 k
+ postgresql-libs     x86_64     9.2.24-9.el7_9      updates               235 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+2 Dependent packages)
+
+Total download size: 689 k
+Installed size: 1.8 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              725 kB/s | 689 kB  00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : postgresql-libs-9.2.24-9.el7_9.x86_64                        1/3
+  Installing : libaio-0.3.109-13.el7.x86_64                                 2/3
+  Installing : sysbench-1.0.20-1.el7.x86_64                                 3/3
+  Verifying  : libaio-0.3.109-13.el7.x86_64                                 1/3
+  Verifying  : sysbench-1.0.20-1.el7.x86_64                                 2/3
+  Verifying  : postgresql-libs-9.2.24-9.el7_9.x86_64                        3/3
+
+Installed:
+  sysbench.x86_64 0:1.0.20-1.el7
+
+Dependency Installed:
+  libaio.x86_64 0:0.3.109-13.el7     postgresql-libs.x86_64 0:9.2.24-9.el7_9
+
+Complete!
+if which psql > /dev/null 2>&1 ; then echo 'psql exists'; else yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm && yum install -y postgresql12; fi && export PGPASSWORD=DBPassword123 && psql -h 192.168.0.58 -p 5432 -U root -d sbtest -c 'select now()'
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+Loaded plugins: fastestmirror
+Examining /var/tmp/yum-root-TVeBz_/pgdg-redhat-repo-latest.noarch.rpm: pgdg-redhat-repo-42.0-38PGDG.noarch
+Marking /var/tmp/yum-root-TVeBz_/pgdg-redhat-repo-latest.noarch.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package pgdg-redhat-repo.noarch 0:42.0-38PGDG will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package           Arch    Version       Repository                        Size
+================================================================================
+Installing:
+ pgdg-redhat-repo  noarch  42.0-38PGDG   /pgdg-redhat-repo-latest.noarch   12 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total size: 12 k
+Installed size: 12 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : pgdg-redhat-repo-42.0-38PGDG.noarch                          1/1
+  Verifying  : pgdg-redhat-repo-42.0-38PGDG.noarch                          1/1
+
+Installed:
+  pgdg-redhat-repo.noarch 0:42.0-38PGDG
+
+Complete!
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Retrieving key from file:///etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Importing GPG key 0x73E3B907:
+ Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+ Fingerprint: f245 f0bf 96ac 1827 44ca ff2e 64fa ce11 73e3 b907
+ Package    : pgdg-redhat-repo-42.0-38PGDG.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Retrieving key from file:///etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Importing GPG key 0x73E3B907:
+ Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+ Fingerprint: f245 f0bf 96ac 1827 44ca ff2e 64fa ce11 73e3 b907
+ Package    : pgdg-redhat-repo-42.0-38PGDG.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Retrieving key from file:///etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Importing GPG key 0x73E3B907:
+ Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+ Fingerprint: f245 f0bf 96ac 1827 44ca ff2e 64fa ce11 73e3 b907
+ Package    : pgdg-redhat-repo-42.0-38PGDG.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Retrieving key from file:///etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Importing GPG key 0x73E3B907:
+ Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+ Fingerprint: f245 f0bf 96ac 1827 44ca ff2e 64fa ce11 73e3 b907
+ Package    : pgdg-redhat-repo-42.0-38PGDG.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Retrieving key from file:///etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Importing GPG key 0x73E3B907:
+ Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+ Fingerprint: f245 f0bf 96ac 1827 44ca ff2e 64fa ce11 73e3 b907
+ Package    : pgdg-redhat-repo-42.0-38PGDG.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Resolving Dependencies
+--> Running transaction check
+---> Package postgresql12.x86_64 0:12.18-1PGDG.rhel7 will be installed
+--> Processing Dependency: postgresql12-libs(x86-64) = 12.18-1PGDG.rhel7 for package: postgresql12-12.18-1PGDG.rhel7.x86_64
+--> Processing Dependency: libicu for package: postgresql12-12.18-1PGDG.rhel7.x86_64
+--> Running transaction check
+---> Package libicu.x86_64 0:50.2-4.el7_7 will be installed
+---> Package postgresql12-libs.x86_64 0:12.18-1PGDG.rhel7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                Arch        Version                   Repository   Size
+================================================================================
+Installing:
+ postgresql12           x86_64      12.18-1PGDG.rhel7         pgdg12      1.6 M
+Installing for dependencies:
+ libicu                 x86_64      50.2-4.el7_7              base        6.9 M
+ postgresql12-libs      x86_64      12.18-1PGDG.rhel7         pgdg12      379 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+2 Dependent packages)
+
+Total download size: 8.9 M
+Installed size: 34 M
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/pgdg12/packages/postgresql12-libs-12.18-1PGDG.rhel7.x86_64.rpm: Header V4 RSA/SHA1 Signature, key ID 73e3b907: NOKEY
+Public key for postgresql12-libs-12.18-1PGDG.rhel7.x86_64.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                              767 kB/s | 8.9 MB  00:11
+Retrieving key from file:///etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : postgresql12-libs-12.18-1PGDG.rhel7.x86_64                   1/3Importing GPG key 0x73E3B907:
+ Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+ Fingerprint: f245 f0bf 96ac 1827 44ca ff2e 64fa ce11 73e3 b907
+ Package    : pgdg-redhat-repo-42.0-38PGDG.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL7
+
+  Installing : libicu-50.2-4.el7_7.x86_64                                   2/3
+  Installing : postgresql12-12.18-1PGDG.rhel7.x86_64                        3/3
+  Verifying  : libicu-50.2-4.el7_7.x86_64                                   1/3
+  Verifying  : postgresql12-12.18-1PGDG.rhel7.x86_64                        2/3
+  Verifying  : postgresql12-libs-12.18-1PGDG.rhel7.x86_64                   3/3
+
+Installed:
+  postgresql12.x86_64 0:12.18-1PGDG.rhel7
+
+Dependency Installed:
+  libicu.x86_64 0:50.2-4.el7_7   postgresql12-libs.x86_64 0:12.18-1PGDG.rhel7
+
+Complete!
+              now
+-------------------------------
+ 2024-03-20 10:00:58.385644+00
+(1 row)
+
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --threads=20 --percentile=99 --report-interval=10 oltp_read_write prepare
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Initializing worker threads...
+
+Creating table 'sbtest5'...
+Creating table 'sbtest3'...
+Creating table 'sbtest1'...
+Creating table 'sbtest2'...
+Creating table 'sbtest9'...
+Creating table 'sbtest7'...
+Creating table 'sbtest8'...
+Creating table 'sbtest6'...
+Inserting 10000000 records into 'sbtest5'
+Inserting 10000000 records into 'sbtest1'
+Inserting 10000000 records into 'sbtest2'
+Creating table 'sbtest4'...
+Inserting 10000000 records into 'sbtest3'
+Creating table 'sbtest10'...
+Inserting 10000000 records into 'sbtest9'
+Inserting 10000000 records into 'sbtest6'
+Inserting 10000000 records into 'sbtest7'
+Inserting 10000000 records into 'sbtest8'
+Inserting 10000000 records into 'sbtest4'
+Inserting 10000000 records into 'sbtest10'
+Creating a secondary index on 'sbtest10'...
+Creating a secondary index on 'sbtest6'...
+Creating a secondary index on 'sbtest1'...
+Creating a secondary index on 'sbtest5'...
+Creating a secondary index on 'sbtest3'...
+Creating a secondary index on 'sbtest9'...
+Creating a secondary index on 'sbtest2'...
+Creating a secondary index on 'sbtest8'...
+Creating a secondary index on 'sbtest7'...
+Creating a secondary index on 'sbtest4'...
+****************************** 16 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=16  --percentile=99  --report-interval=10 oltp_read_write run
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 16
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 16 tps: 601.48 qps: 12050.19 (r/w/o: 8436.88/2408.84/1204.47) lat (ms,99%): 73.13 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 16 tps: 748.01 qps: 14962.86 (r/w/o: 10474.98/2991.75/1496.13) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 16 tps: 828.20 qps: 16563.97 (r/w/o: 11594.65/3312.91/1656.41) lat (ms,99%): 47.47 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 16 tps: 952.70 qps: 19048.95 (r/w/o: 13332.97/3810.59/1905.40) lat (ms,99%): 49.21 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 16 tps: 825.90 qps: 16529.10 (r/w/o: 11570.60/3306.70/1651.80) lat (ms,99%): 48.34 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 16 tps: 844.20 qps: 16865.71 (r/w/o: 11806.21/3371.20/1688.30) lat (ms,99%): 44.17 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 16 tps: 838.20 qps: 16774.48 (r/w/o: 11743.38/3354.70/1676.40) lat (ms,99%): 47.47 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 16 tps: 859.80 qps: 17191.62 (r/w/o: 12033.41/3438.50/1719.70) lat (ms,99%): 49.21 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 16 tps: 885.20 qps: 17707.84 (r/w/o: 12395.96/3541.39/1770.49) lat (ms,99%): 41.10 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 16 tps: 897.80 qps: 17952.51 (r/w/o: 12566.51/3590.50/1795.50) lat (ms,99%): 43.39 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 16 tps: 933.50 qps: 18673.61 (r/w/o: 13072.74/3733.78/1867.09) lat (ms,99%): 40.37 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 16 tps: 926.80 qps: 18532.53 (r/w/o: 12972.02/3706.91/1853.60) lat (ms,99%): 44.98 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 16 tps: 948.41 qps: 18970.01 (r/w/o: 13278.27/3794.92/1896.81) lat (ms,99%): 41.10 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 16 tps: 1004.70 qps: 20100.95 (r/w/o: 14069.77/4021.79/2009.40) lat (ms,99%): 34.33 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 16 tps: 926.00 qps: 18514.93 (r/w/o: 12961.25/3701.79/1851.89) lat (ms,99%): 38.94 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 16 tps: 1019.30 qps: 20382.64 (r/w/o: 14267.73/4076.31/2038.60) lat (ms,99%): 33.12 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 16 tps: 973.50 qps: 19475.91 (r/w/o: 13633.81/3895.00/1947.10) lat (ms,99%): 38.94 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 16 tps: 867.08 qps: 17338.26 (r/w/o: 12137.29/3466.81/1734.16) lat (ms,99%): 43.39 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 16 tps: 770.32 qps: 15403.10 (r/w/o: 10781.18/3081.28/1540.64) lat (ms,99%): 44.98 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 16 tps: 859.90 qps: 17196.01 (r/w/o: 12037.91/3438.30/1719.80) lat (ms,99%): 43.39 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 16 tps: 820.50 qps: 16424.07 (r/w/o: 11495.78/3287.29/1641.00) lat (ms,99%): 58.92 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 16 tps: 812.70 qps: 16238.30 (r/w/o: 11366.60/3246.30/1625.40) lat (ms,99%): 81.48 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 16 tps: 814.90 qps: 16297.02 (r/w/o: 11407.51/3259.70/1629.80) lat (ms,99%): 74.46 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 16 tps: 780.70 qps: 15621.77 (r/w/o: 10936.68/3123.69/1561.40) lat (ms,99%): 77.19 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 16 tps: 773.90 qps: 15477.34 (r/w/o: 10834.26/3095.29/1547.79) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 16 tps: 830.81 qps: 16619.11 (r/w/o: 11633.68/3323.82/1661.61) lat (ms,99%): 64.47 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 16 tps: 908.20 qps: 18159.05 (r/w/o: 12711.46/3631.19/1816.39) lat (ms,99%): 42.61 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 16 tps: 917.10 qps: 18345.24 (r/w/o: 12840.83/3670.21/1834.20) lat (ms,99%): 39.65 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 16 tps: 925.10 qps: 18501.74 (r/w/o: 12952.03/3699.51/1850.20) lat (ms,99%): 41.10 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 16 tps: 648.80 qps: 12980.51 (r/w/o: 9085.01/2597.90/1297.60) lat (ms,99%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 16 tps: 633.70 qps: 12668.32 (r/w/o: 8868.21/2532.70/1267.40) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 16 tps: 685.20 qps: 13709.08 (r/w/o: 9596.59/2742.10/1370.40) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 16 tps: 694.20 qps: 13875.84 (r/w/o: 9713.16/2774.59/1388.09) lat (ms,99%): 84.47 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 16 tps: 758.10 qps: 15164.22 (r/w/o: 10614.92/3032.70/1516.60) lat (ms,99%): 75.82 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 16 tps: 796.00 qps: 15920.73 (r/w/o: 11145.92/3182.81/1592.00) lat (ms,99%): 65.65 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 16 tps: 779.90 qps: 15600.35 (r/w/o: 10919.63/3120.91/1559.80) lat (ms,99%): 87.56 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            4212950
+        write:                           1203698
+        other:                           601852
+        total:                           6018500
+    transactions:                        300925 (835.78 per sec.)
+    queries:                             6018500 (16715.53 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0528s
+    total number of events:              300925
+
+Latency (ms):
+         min:                                    5.66
+         avg:                                   19.14
+         max:                                  828.71
+         99th percentile:                       58.92
+         sum:                              5759716.98
+
+Threads fairness:
+    events (avg/stddev):           18807.8125/77.86
+    execution time (avg/stddev):   359.9823/0.01
+
+****************************** 32 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=32  --percentile=99  --report-interval=10 oltp_read_write run
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 32
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 32 tps: 807.49 qps: 16194.11 (r/w/o: 11342.96/3232.96/1618.18) lat (ms,99%): 69.29 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 32 tps: 977.13 qps: 19538.46 (r/w/o: 13676.86/3907.33/1954.27) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 32 tps: 1077.40 qps: 21546.68 (r/w/o: 15079.06/4313.02/2154.61) lat (ms,99%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 32 tps: 1139.90 qps: 22802.85 (r/w/o: 15964.17/4558.69/2280.00) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 32 tps: 1205.00 qps: 24089.72 (r/w/o: 16861.84/4817.98/2409.89) lat (ms,99%): 58.92 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 32 tps: 1265.21 qps: 25312.55 (r/w/o: 17721.91/5059.93/2530.72) lat (ms,99%): 55.82 err/s: 0.10 reconn/s: 0.00
+[ 70s ] thds: 32 tps: 1320.69 qps: 26422.21 (r/w/o: 18493.07/5287.76/2641.38) lat (ms,99%): 54.83 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 32 tps: 1334.91 qps: 26688.96 (r/w/o: 18683.31/5335.83/2669.82) lat (ms,99%): 52.89 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 32 tps: 1325.00 qps: 26504.27 (r/w/o: 18553.18/5300.99/2650.10) lat (ms,99%): 54.83 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 32 tps: 1309.30 qps: 26182.38 (r/w/o: 18326.98/5236.70/2618.70) lat (ms,99%): 53.85 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 32 tps: 1342.20 qps: 26842.22 (r/w/o: 18788.52/5369.50/2684.20) lat (ms,99%): 50.11 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 32 tps: 1334.00 qps: 26690.76 (r/w/o: 18682.37/5340.19/2668.20) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 32 tps: 1283.90 qps: 25666.89 (r/w/o: 17966.59/5132.50/2567.80) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 32 tps: 1266.31 qps: 25346.07 (r/w/o: 17743.42/5069.83/2532.82) lat (ms,99%): 71.83 err/s: 0.10 reconn/s: 0.00
+[ 150s ] thds: 32 tps: 1293.89 qps: 25863.19 (r/w/o: 18105.72/5169.68/2587.79) lat (ms,99%): 66.84 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 32 tps: 1287.70 qps: 25761.14 (r/w/o: 18033.03/5152.51/2575.60) lat (ms,99%): 73.13 err/s: 0.10 reconn/s: 0.00
+[ 170s ] thds: 32 tps: 1314.87 qps: 26288.98 (r/w/o: 18402.57/5256.78/2629.64) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 32 tps: 1376.91 qps: 27540.94 (r/w/o: 19278.80/5508.23/2753.91) lat (ms,99%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 32 tps: 1378.30 qps: 27566.80 (r/w/o: 19297.17/5513.12/2756.51) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 32 tps: 1366.70 qps: 27347.27 (r/w/o: 19141.18/5472.59/2733.50) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 32 tps: 1414.97 qps: 28283.03 (r/w/o: 19800.53/5652.57/2829.93) lat (ms,99%): 54.83 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 32 tps: 1428.22 qps: 28562.82 (r/w/o: 19992.32/5714.06/2856.43) lat (ms,99%): 51.02 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 32 tps: 1402.19 qps: 28042.78 (r/w/o: 19630.41/5607.78/2804.59) lat (ms,99%): 56.84 err/s: 0.10 reconn/s: 0.00
+[ 240s ] thds: 32 tps: 1332.40 qps: 26651.03 (r/w/o: 18655.82/5330.21/2665.00) lat (ms,99%): 65.65 err/s: 0.10 reconn/s: 0.00
+[ 250s ] thds: 32 tps: 1366.89 qps: 27340.38 (r/w/o: 19135.41/5471.48/2733.49) lat (ms,99%): 56.84 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 32 tps: 1414.89 qps: 28301.61 (r/w/o: 19812.97/5658.56/2830.08) lat (ms,99%): 53.85 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 32 tps: 1447.02 qps: 28942.05 (r/w/o: 20260.84/5787.37/2893.83) lat (ms,99%): 51.94 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 32 tps: 1435.90 qps: 28716.77 (r/w/o: 20103.25/5741.51/2872.01) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 32 tps: 1427.30 qps: 28540.97 (r/w/o: 19977.45/5709.01/2854.51) lat (ms,99%): 53.85 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 32 tps: 964.90 qps: 19301.90 (r/w/o: 13510.50/3861.40/1930.00) lat (ms,99%): 70.55 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 32 tps: 986.51 qps: 19724.24 (r/w/o: 13805.70/3945.63/1972.91) lat (ms,99%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 32 tps: 1060.79 qps: 21218.40 (r/w/o: 14854.53/4242.18/2121.69) lat (ms,99%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 32 tps: 1120.69 qps: 22414.24 (r/w/o: 15688.62/4484.15/2241.47) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 32 tps: 1137.31 qps: 22753.58 (r/w/o: 15929.00/4549.96/2274.63) lat (ms,99%): 66.84 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 32 tps: 1172.31 qps: 23443.16 (r/w/o: 16409.61/4688.83/2344.72) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 32 tps: 1216.30 qps: 24325.80 (r/w/o: 17027.33/4866.18/2432.29) lat (ms,99%): 58.92 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            6347460
+        write:                           1813545
+        other:                           906785
+        total:                           9067790
+    transactions:                        453385 (1259.14 per sec.)
+    queries:                             9067790 (25183.09 per sec.)
+    ignored errors:                      5      (0.01 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0730s
+    total number of events:              453385
+
+Latency (ms):
+         min:                                    5.99
+         avg:                                   25.41
+         max:                                  351.81
+         99th percentile:                       61.08
+         sum:                             11519780.91
+
+Threads fairness:
+    events (avg/stddev):           14168.2812/68.88
+    execution time (avg/stddev):   359.9932/0.02
+
+****************************** 64 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=64  --percentile=99  --report-interval=10 oltp_read_write run
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 64
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 64 tps: 1008.46 qps: 20256.49 (r/w/o: 14195.86/4037.32/2023.31) lat (ms,99%): 106.75 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 64 tps: 1222.03 qps: 24437.44 (r/w/o: 17104.35/4888.93/2444.16) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 64 tps: 1285.40 qps: 25706.21 (r/w/o: 17994.34/5141.18/2570.69) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 64 tps: 1293.71 qps: 25878.35 (r/w/o: 18114.20/5176.83/2587.31) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 64 tps: 1297.59 qps: 25945.85 (r/w/o: 18161.00/5189.57/2595.29) lat (ms,99%): 108.68 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 64 tps: 1280.61 qps: 25615.46 (r/w/o: 17928.48/5125.75/2561.23) lat (ms,99%): 130.13 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 64 tps: 1308.57 qps: 26176.85 (r/w/o: 18326.71/5232.89/2617.24) lat (ms,99%): 95.81 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 64 tps: 1323.14 qps: 26454.68 (r/w/o: 18518.01/5290.88/2645.79) lat (ms,99%): 108.68 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 64 tps: 1288.50 qps: 25772.23 (r/w/o: 18041.82/5152.81/2577.60) lat (ms,99%): 155.80 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 64 tps: 1341.00 qps: 26840.19 (r/w/o: 18782.79/5375.30/2682.10) lat (ms,99%): 104.84 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 64 tps: 1329.29 qps: 26561.16 (r/w/o: 18597.30/5305.27/2658.59) lat (ms,99%): 118.92 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 64 tps: 1324.60 qps: 26502.53 (r/w/o: 18553.32/5299.71/2649.50) lat (ms,99%): 104.84 err/s: 0.10 reconn/s: 0.00
+[ 130s ] thds: 64 tps: 1301.80 qps: 26032.61 (r/w/o: 18222.83/5206.28/2603.49) lat (ms,99%): 147.61 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 64 tps: 1318.20 qps: 26357.85 (r/w/o: 18449.36/5271.89/2636.59) lat (ms,99%): 114.72 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 64 tps: 1318.70 qps: 26375.51 (r/w/o: 18463.01/5275.00/2637.50) lat (ms,99%): 130.13 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 64 tps: 1306.90 qps: 26135.90 (r/w/o: 18293.97/5228.12/2613.81) lat (ms,99%): 123.28 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 64 tps: 1334.10 qps: 26693.96 (r/w/o: 18687.47/5338.29/2668.20) lat (ms,99%): 137.35 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 64 tps: 1384.01 qps: 27691.21 (r/w/o: 19380.58/5542.72/2767.91) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 64 tps: 1315.07 qps: 26282.08 (r/w/o: 18400.77/5251.08/2630.24) lat (ms,99%): 167.44 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 64 tps: 1330.69 qps: 26615.37 (r/w/o: 18630.81/5323.17/2661.39) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 64 tps: 1379.79 qps: 27592.01 (r/w/o: 19314.16/5518.26/2759.58) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 64 tps: 1337.85 qps: 26750.90 (r/w/o: 18722.40/5352.70/2675.80) lat (ms,99%): 123.28 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 64 tps: 1346.20 qps: 26934.22 (r/w/o: 18857.21/5384.60/2692.40) lat (ms,99%): 95.81 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 64 tps: 1362.11 qps: 27240.22 (r/w/o: 19068.18/5447.82/2724.21) lat (ms,99%): 112.67 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 64 tps: 1385.59 qps: 27717.41 (r/w/o: 19402.17/5544.16/2771.08) lat (ms,99%): 94.10 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 64 tps: 1345.60 qps: 26906.27 (r/w/o: 18833.65/5381.31/2691.31) lat (ms,99%): 118.92 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 64 tps: 1357.80 qps: 27166.98 (r/w/o: 19016.16/5435.22/2715.61) lat (ms,99%): 102.97 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 64 tps: 1018.10 qps: 20359.17 (r/w/o: 14250.88/4072.19/2036.10) lat (ms,99%): 118.92 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 64 tps: 978.70 qps: 19567.82 (r/w/o: 13699.51/3910.80/1957.50) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 64 tps: 1021.80 qps: 20435.59 (r/w/o: 14304.59/4087.60/2043.40) lat (ms,99%): 102.97 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 64 tps: 1064.39 qps: 21287.53 (r/w/o: 14901.08/4257.57/2128.88) lat (ms,99%): 95.81 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 64 tps: 1133.50 qps: 22679.05 (r/w/o: 15873.63/4538.31/2267.10) lat (ms,99%): 92.42 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 64 tps: 1161.30 qps: 23219.82 (r/w/o: 16255.55/4641.68/2322.59) lat (ms,99%): 90.78 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 64 tps: 1197.99 qps: 23961.29 (r/w/o: 16773.85/4791.46/2395.98) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 64 tps: 1221.31 qps: 24427.15 (r/w/o: 17097.70/4886.83/2442.61) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 64 tps: 1244.00 qps: 24875.78 (r/w/o: 17414.56/4973.32/2487.91) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            6366514
+        write:                           1818995
+        other:                           909509
+        total:                           9095018
+    transactions:                        454750 (1262.74 per sec.)
+    queries:                             9095018 (25254.89 per sec.)
+    ignored errors:                      1      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.1274s
+    total number of events:              454750
+
+Latency (ms):
+         min:                                    6.50
+         avg:                                   50.67
+         max:                                  450.40
+         99th percentile:                      104.84
+         sum:                             23042368.22
+
+Threads fairness:
+    events (avg/stddev):           7105.4688/27.16
+    execution time (avg/stddev):   360.0370/0.03
+
+****************************** 128 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=128  --percentile=99  --report-interval=10 oltp_read_write run
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 128
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 128 tps: 922.94 qps: 18620.47 (r/w/o: 13062.53/3699.57/1858.38) lat (ms,99%): 277.21 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 128 tps: 1091.62 qps: 21832.04 (r/w/o: 15282.81/4365.79/2183.44) lat (ms,99%): 167.44 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 128 tps: 1151.50 qps: 23024.02 (r/w/o: 16115.72/4605.50/2302.80) lat (ms,99%): 219.36 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 128 tps: 1216.70 qps: 24340.53 (r/w/o: 17036.25/4870.59/2433.69) lat (ms,99%): 173.58 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 128 tps: 1197.76 qps: 23997.60 (r/w/o: 16795.17/4806.82/2395.61) lat (ms,99%): 272.27 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 128 tps: 1236.95 qps: 24711.00 (r/w/o: 17303.90/4933.10/2474.00) lat (ms,99%): 200.47 err/s: 0.10 reconn/s: 0.00
+[ 70s ] thds: 128 tps: 1228.39 qps: 24558.49 (r/w/o: 17192.02/4909.58/2456.89) lat (ms,99%): 267.41 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 128 tps: 1265.51 qps: 25322.02 (r/w/o: 17727.88/5063.12/2531.01) lat (ms,99%): 150.29 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 128 tps: 1259.20 qps: 25168.79 (r/w/o: 17614.56/5035.62/2518.61) lat (ms,99%): 267.41 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 128 tps: 1231.60 qps: 24631.60 (r/w/o: 17242.70/4925.80/2463.10) lat (ms,99%): 211.60 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 128 tps: 1207.50 qps: 24162.07 (r/w/o: 16911.58/4835.29/2415.20) lat (ms,99%): 253.35 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 128 tps: 1235.40 qps: 24697.97 (r/w/o: 17290.28/4936.99/2470.70) lat (ms,99%): 207.82 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 128 tps: 1207.09 qps: 24141.07 (r/w/o: 16899.11/4827.67/2414.29) lat (ms,99%): 244.38 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 128 tps: 1228.40 qps: 24611.69 (r/w/o: 17226.26/4928.62/2456.81) lat (ms,99%): 287.38 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 128 tps: 1217.50 qps: 24349.45 (r/w/o: 17045.04/4869.41/2435.01) lat (ms,99%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 128 tps: 1215.58 qps: 24261.98 (r/w/o: 16981.81/4849.12/2431.06) lat (ms,99%): 170.48 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 128 tps: 1163.00 qps: 23273.19 (r/w/o: 16293.26/4653.52/2326.41) lat (ms,99%): 282.25 err/s: 0.20 reconn/s: 0.00
+[ 180s ] thds: 128 tps: 1259.10 qps: 25179.77 (r/w/o: 17626.28/5035.29/2518.20) lat (ms,99%): 147.61 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 128 tps: 1147.29 qps: 22951.21 (r/w/o: 16068.17/4588.16/2294.88) lat (ms,99%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 128 tps: 1279.72 qps: 25618.65 (r/w/o: 17931.92/5126.79/2559.95) lat (ms,99%): 137.35 err/s: 0.20 reconn/s: 0.00
+[ 210s ] thds: 128 tps: 1280.49 qps: 25570.15 (r/w/o: 17897.42/5111.95/2560.77) lat (ms,99%): 200.47 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 128 tps: 1198.09 qps: 23983.25 (r/w/o: 16792.00/4794.97/2396.29) lat (ms,99%): 320.17 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 128 tps: 1294.82 qps: 25875.63 (r/w/o: 18107.60/5178.79/2589.24) lat (ms,99%): 139.85 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 128 tps: 1166.21 qps: 23335.11 (r/w/o: 16340.88/4661.32/2332.91) lat (ms,99%): 337.94 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 128 tps: 1241.59 qps: 24879.07 (r/w/o: 17405.61/4990.07/2483.39) lat (ms,99%): 235.74 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 128 tps: 1266.00 qps: 25261.77 (r/w/o: 17685.68/5043.89/2532.20) lat (ms,99%): 235.74 err/s: 0.10 reconn/s: 0.00
+[ 270s ] thds: 128 tps: 1278.70 qps: 25585.08 (r/w/o: 17912.29/5115.50/2557.30) lat (ms,99%): 211.60 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 128 tps: 1072.60 qps: 21472.97 (r/w/o: 15033.85/4293.91/2145.21) lat (ms,99%): 240.02 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 128 tps: 891.11 qps: 17818.16 (r/w/o: 12471.11/3564.73/1782.32) lat (ms,99%): 211.60 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 128 tps: 938.69 qps: 18766.73 (r/w/o: 13137.21/3751.95/1877.57) lat (ms,99%): 244.38 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 128 tps: 961.00 qps: 19240.67 (r/w/o: 13454.25/3864.41/1922.01) lat (ms,99%): 344.08 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 128 tps: 1017.10 qps: 20334.39 (r/w/o: 14251.39/4048.80/2034.20) lat (ms,99%): 196.89 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 128 tps: 1062.98 qps: 21241.88 (r/w/o: 14863.27/4252.64/2125.97) lat (ms,99%): 204.11 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 128 tps: 1065.41 qps: 21348.60 (r/w/o: 14943.77/4273.82/2131.01) lat (ms,99%): 211.60 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 128 tps: 1042.61 qps: 20821.22 (r/w/o: 14575.75/4160.14/2085.32) lat (ms,99%): 314.45 err/s: 0.10 reconn/s: 0.00
+[ 360s ] thds: 128 tps: 1058.30 qps: 21210.12 (r/w/o: 14841.84/4251.28/2116.99) lat (ms,99%): 277.21 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            5853736
+        write:                           1672466
+        other:                           836264
+        total:                           8362466
+    transactions:                        418117 (1160.64 per sec.)
+    queries:                             8362466 (23213.11 per sec.)
+    ignored errors:                      7      (0.02 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.2459s
+    total number of events:              418117
+
+Latency (ms):
+         min:                                    6.46
+         avg:                                  110.23
+         max:                                  580.23
+         99th percentile:                      248.83
+         sum:                             46088153.60
+
+Threads fairness:
+    events (avg/stddev):           3266.5391/15.63
+    execution time (avg/stddev):   360.0637/0.06
+
+****************************** 256 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=256  --percentile=99  --report-interval=10 oltp_read_write run
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 256
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 256 tps: 760.02 qps: 15586.20 (r/w/o: 10966.13/3074.15/1545.92) lat (ms,99%): 646.19 err/s: 0.10 reconn/s: 0.00
+[ 20s ] thds: 256 tps: 900.12 qps: 17945.58 (r/w/o: 12567.73/3577.79/1800.05) lat (ms,99%): 580.02 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 256 tps: 969.09 qps: 19361.94 (r/w/o: 13544.19/3879.47/1938.28) lat (ms,99%): 502.20 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 256 tps: 1012.01 qps: 20269.10 (r/w/o: 14183.44/4061.44/2024.22) lat (ms,99%): 458.96 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 256 tps: 1062.10 qps: 21232.52 (r/w/o: 14876.74/4231.48/2124.29) lat (ms,99%): 493.24 err/s: 0.10 reconn/s: 0.00
+[ 60s ] thds: 256 tps: 1013.30 qps: 20370.46 (r/w/o: 14245.84/4097.71/2026.91) lat (ms,99%): 580.02 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 256 tps: 1070.09 qps: 21330.12 (r/w/o: 14934.48/4254.96/2140.68) lat (ms,99%): 520.62 err/s: 0.20 reconn/s: 0.00
+[ 80s ] thds: 256 tps: 1101.81 qps: 22005.50 (r/w/o: 15404.47/4397.62/2203.41) lat (ms,99%): 450.77 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 256 tps: 1153.30 qps: 23064.69 (r/w/o: 16154.76/4603.02/2306.91) lat (ms,99%): 411.96 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 256 tps: 1122.89 qps: 22470.37 (r/w/o: 15730.81/4493.37/2246.19) lat (ms,99%): 502.20 err/s: 0.10 reconn/s: 0.00
+[ 110s ] thds: 256 tps: 1155.41 qps: 23073.03 (r/w/o: 16149.29/4612.63/2311.11) lat (ms,99%): 404.61 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 256 tps: 1153.40 qps: 23088.24 (r/w/o: 16158.43/4623.21/2306.60) lat (ms,99%): 458.96 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 256 tps: 1125.20 qps: 22444.64 (r/w/o: 15704.66/4488.99/2250.99) lat (ms,99%): 475.79 err/s: 0.10 reconn/s: 0.00
+[ 140s ] thds: 256 tps: 1129.00 qps: 22681.15 (r/w/o: 15878.64/4544.31/2258.21) lat (ms,99%): 419.45 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 256 tps: 1149.19 qps: 22960.59 (r/w/o: 16066.42/4595.48/2298.69) lat (ms,99%): 549.52 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 256 tps: 1147.70 qps: 22948.08 (r/w/o: 16086.56/4565.92/2295.61) lat (ms,99%): 467.30 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 256 tps: 1139.19 qps: 22793.10 (r/w/o: 15947.83/4566.58/2278.69) lat (ms,99%): 484.44 err/s: 0.20 reconn/s: 0.00
+[ 180s ] thds: 256 tps: 1153.00 qps: 23072.31 (r/w/o: 16148.41/4617.90/2306.00) lat (ms,99%): 467.30 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 256 tps: 1219.10 qps: 24362.46 (r/w/o: 17049.87/4874.39/2438.20) lat (ms,99%): 520.62 err/s: 0.10 reconn/s: 0.00
+[ 200s ] thds: 256 tps: 1201.18 qps: 24030.30 (r/w/o: 16818.45/4808.80/2403.05) lat (ms,99%): 467.30 err/s: 0.10 reconn/s: 0.00
+[ 210s ] thds: 256 tps: 1221.60 qps: 24462.33 (r/w/o: 17127.55/4890.79/2443.99) lat (ms,99%): 502.20 err/s: 0.10 reconn/s: 0.00
+[ 220s ] thds: 256 tps: 1235.11 qps: 24661.46 (r/w/o: 17262.98/4928.35/2470.13) lat (ms,99%): 539.71 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 256 tps: 1225.10 qps: 24500.25 (r/w/o: 17151.14/4898.31/2450.81) lat (ms,99%): 467.30 err/s: 0.20 reconn/s: 0.00
+[ 240s ] thds: 256 tps: 1210.11 qps: 24204.16 (r/w/o: 16938.71/4845.13/2420.32) lat (ms,99%): 458.96 err/s: 0.10 reconn/s: 0.00
+[ 250s ] thds: 256 tps: 1198.18 qps: 23965.54 (r/w/o: 16779.55/4789.53/2396.46) lat (ms,99%): 363.18 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 256 tps: 1242.51 qps: 24856.33 (r/w/o: 17398.79/4972.33/2485.21) lat (ms,99%): 419.45 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 256 tps: 1230.93 qps: 24593.58 (r/w/o: 17194.81/4937.42/2461.36) lat (ms,99%): 484.44 err/s: 0.10 reconn/s: 0.00
+[ 280s ] thds: 256 tps: 1236.47 qps: 24822.15 (r/w/o: 17392.84/4955.07/2474.23) lat (ms,99%): 612.21 err/s: 0.10 reconn/s: 0.00
+[ 290s ] thds: 256 tps: 1235.92 qps: 24719.08 (r/w/o: 17309.34/4937.90/2471.85) lat (ms,99%): 549.52 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 256 tps: 1182.92 qps: 23708.19 (r/w/o: 16570.74/4772.70/2364.75) lat (ms,99%): 511.33 err/s: 0.10 reconn/s: 0.00
+[ 310s ] thds: 256 tps: 827.44 qps: 16570.74 (r/w/o: 11598.52/3315.55/1656.67) lat (ms,99%): 623.33 err/s: 0.10 reconn/s: 0.00
+[ 320s ] thds: 256 tps: 914.30 qps: 18193.19 (r/w/o: 12759.57/3604.72/1828.91) lat (ms,99%): 694.45 err/s: 0.10 reconn/s: 0.00
+[ 330s ] thds: 256 tps: 948.88 qps: 19013.39 (r/w/o: 13279.19/3836.54/1897.67) lat (ms,99%): 590.56 err/s: 0.20 reconn/s: 0.00
+[ 340s ] thds: 256 tps: 1006.41 qps: 20154.85 (r/w/o: 14130.20/4010.93/2013.71) lat (ms,99%): 719.92 err/s: 0.10 reconn/s: 0.00
+[ 350s ] thds: 256 tps: 1013.81 qps: 20307.84 (r/w/o: 14206.70/4073.33/2027.81) lat (ms,99%): 530.08 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 256 tps: 1035.51 qps: 20629.44 (r/w/o: 14461.40/4097.13/2070.91) lat (ms,99%): 601.29 err/s: 0.10 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            5562270
+        write:                           1589131
+        other:                           794653
+        total:                           7946054
+    transactions:                        397282 (1101.93 per sec.)
+    queries:                             7946054 (22039.67 per sec.)
+    ignored errors:                      23     (0.06 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.5326s
+    total number of events:              397282
+
+Latency (ms):
+         min:                                    7.98
+         avg:                                  232.11
+         max:                                 1294.61
+         99th percentile:                      539.71
+         sum:                             92212856.64
+
+Threads fairness:
+    events (avg/stddev):           1551.8828/16.04
+    execution time (avg/stddev):   360.2065/0.11
+
+
+****************************** 512 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=192.168.0.58 --pgsql-port=5432 --pgsql-user=root --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=512  --percentile=99  --report-interval=10 oltp_read_write run
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Zy/gAplNzzWvIa5goOt76eAZz8ZUzVMTq/Dzia+3cRc.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /root/.ssh/known_hosts:49
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "119.8.57.154"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 512
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 512 tps: 362.79 qps: 7934.44 (r/w/o: 5645.93/1514.59/773.92) lat (ms,99%): 3911.79 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 512 tps: 637.62 qps: 12620.99 (r/w/o: 8847.37/2495.58/1278.04) lat (ms,99%): 1069.86 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 512 tps: 716.10 qps: 14213.48 (r/w/o: 9906.75/2876.32/1430.41) lat (ms,99%): 893.56 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 512 tps: 712.20 qps: 14099.27 (r/w/o: 9820.28/2857.99/1421.00) lat (ms,99%): 943.16 err/s: 0.10 reconn/s: 0.00
+[ 50s ] thds: 512 tps: 733.59 qps: 15167.76 (r/w/o: 10712.10/2982.57/1473.09) lat (ms,99%): 846.57 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 512 tps: 805.30 qps: 15708.04 (r/w/o: 10935.76/3162.79/1609.49) lat (ms,99%): 960.30 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 512 tps: 784.21 qps: 15845.88 (r/w/o: 11147.80/3129.95/1568.13) lat (ms,99%): 773.68 err/s: 0.20 reconn/s: 0.00
+[ 80s ] thds: 512 tps: 784.09 qps: 15649.65 (r/w/o: 10944.90/3134.97/1569.79) lat (ms,99%): 802.05 err/s: 0.10 reconn/s: 0.00
+[ 90s ] thds: 512 tps: 766.00 qps: 15146.58 (r/w/o: 10531.95/3090.42/1524.21) lat (ms,99%): 861.95 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 512 tps: 772.20 qps: 15376.99 (r/w/o: 10758.57/3068.82/1549.61) lat (ms,99%): 816.63 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 512 tps: 778.40 qps: 15956.75 (r/w/o: 11277.14/3120.81/1558.80) lat (ms,99%): 802.05 err/s: 0.10 reconn/s: 0.00
+[ 120s ] thds: 512 tps: 786.89 qps: 15541.17 (r/w/o: 10795.91/3172.77/1572.49) lat (ms,99%): 816.63 err/s: 0.10 reconn/s: 0.00
+[ 130s ] thds: 512 tps: 730.70 qps: 14762.75 (r/w/o: 10397.33/2899.31/1466.10) lat (ms,99%): 1129.24 err/s: 0.50 reconn/s: 0.00
+[ 140s ] thds: 512 tps: 678.10 qps: 13896.63 (r/w/o: 9672.25/2867.69/1356.69) lat (ms,99%): 1453.01 err/s: 0.20 reconn/s: 0.00
+[ 150s ] thds: 512 tps: 795.21 qps: 15503.45 (r/w/o: 10872.60/3043.83/1587.02) lat (ms,99%): 1533.66 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 512 tps: 739.90 qps: 14739.53 (r/w/o: 10330.55/2928.09/1480.89) lat (ms,99%): 1032.01 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 512 tps: 701.20 qps: 13869.37 (r/w/o: 9657.45/2809.01/1402.91) lat (ms,99%): 960.30 err/s: 0.10 reconn/s: 0.00
+[ 180s ] thds: 512 tps: 719.10 qps: 14591.46 (r/w/o: 10260.27/2892.59/1438.60) lat (ms,99%): 893.56 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 512 tps: 785.59 qps: 15583.05 (r/w/o: 10871.69/3140.67/1570.68) lat (ms,99%): 831.46 err/s: 0.20 reconn/s: 0.00
+[ 200s ] thds: 512 tps: 736.61 qps: 14780.23 (r/w/o: 10377.49/2927.73/1475.01) lat (ms,99%): 1050.76 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 512 tps: 749.99 qps: 15464.91 (r/w/o: 10806.00/3157.04/1501.87) lat (ms,99%): 1427.08 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 512 tps: 826.60 qps: 16182.39 (r/w/o: 11349.19/3179.50/1653.70) lat (ms,99%): 1032.01 err/s: 0.10 reconn/s: 0.00
+[ 230s ] thds: 512 tps: 835.30 qps: 16708.81 (r/w/o: 11719.81/3321.20/1667.80) lat (ms,99%): 816.63 err/s: 0.10 reconn/s: 0.00
+[ 240s ] thds: 512 tps: 845.39 qps: 16906.08 (r/w/o: 11788.82/3424.38/1692.89) lat (ms,99%): 1327.91 err/s: 0.20 reconn/s: 0.00
+[ 250s ] thds: 512 tps: 874.20 qps: 17391.55 (r/w/o: 12200.04/3444.51/1747.01) lat (ms,99%): 719.92 err/s: 0.10 reconn/s: 0.00
+[ 260s ] thds: 512 tps: 864.61 qps: 17452.65 (r/w/o: 12256.60/3464.33/1731.71) lat (ms,99%): 719.92 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 512 tps: 865.40 qps: 17482.45 (r/w/o: 12216.93/3534.11/1731.40) lat (ms,99%): 719.92 err/s: 0.20 reconn/s: 0.00
+[ 280s ] thds: 512 tps: 918.31 qps: 18106.12 (r/w/o: 12659.89/3611.32/1834.91) lat (ms,99%): 719.92 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 512 tps: 959.20 qps: 19340.90 (r/w/o: 13512.83/3907.48/1920.59) lat (ms,99%): 694.45 err/s: 0.10 reconn/s: 0.00
+[ 300s ] thds: 512 tps: 951.00 qps: 19053.88 (r/w/o: 13379.16/3773.32/1901.41) lat (ms,99%): 669.89 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 512 tps: 999.00 qps: 19873.57 (r/w/o: 13918.88/3956.39/1998.30) lat (ms,99%): 669.89 err/s: 0.10 reconn/s: 0.00
+[ 320s ] thds: 512 tps: 1008.49 qps: 19965.03 (r/w/o: 13923.78/4026.17/2015.08) lat (ms,99%): 646.19 err/s: 0.10 reconn/s: 0.00
+[ 330s ] thds: 512 tps: 953.02 qps: 19264.78 (r/w/o: 13556.47/3798.68/1909.64) lat (ms,99%): 669.89 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 512 tps: 981.07 qps: 19559.01 (r/w/o: 13633.59/3966.78/1958.64) lat (ms,99%): 634.66 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 512 tps: 941.91 qps: 18714.75 (r/w/o: 13097.48/3730.15/1887.13) lat (ms,99%): 669.89 err/s: 0.10 reconn/s: 0.00
+[ 360s ] thds: 512 tps: 949.05 qps: 18922.42 (r/w/o: 13214.54/3817.38/1890.49) lat (ms,99%): 669.89 err/s: 0.10 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            4074084
+        write:                           1163919
+        other:                           582061
+        total:                           5820064
+    transactions:                        290978 (801.77 per sec.)
+    queries:                             5820064 (16036.88 per sec.)
+    ignored errors:                      28     (0.08 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          362.9159s
+    total number of events:              290978
+
+Latency (ms):
+         min:                                   10.37
+         avg:                                  636.29
+         max:                                 4284.05
+         99th percentile:                     1069.86
+         sum:                            185145843.79
+
+Threads fairness:
+    events (avg/stddev):           568.3164/4.62
+    execution time (avg/stddev):   361.6130/1.00
