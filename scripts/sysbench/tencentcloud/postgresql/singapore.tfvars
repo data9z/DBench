@@ -1,0 +1,12 @@
+region = "ap-singapore"
+zone = "ap-singapore-1"
+slave_zone = "ap-singapore-2"
+db_cpu = 4
+db_mem_size = 8
+db_disk_size = 100
+db_user = "sbtest"
+db_pwd = "DBPassword@123"
+key_name = "singapore"
+instance_type = "SA2.LARGE8"
+instance_disk_type = "CLOUD_BSSD"
+public_key = "../../../image/authorized_keys"

@@ -1,0 +1,753 @@
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # alicloud_db_account.account will be created
+  + resource "alicloud_db_account" "account" {
+      + account_description   = (known after apply)
+      + account_name          = "sbtest"
+      + account_password      = (sensitive value)
+      + account_type          = "Super"
+      + db_instance_id        = (known after apply)
+      + description           = (known after apply)
+      + id                    = (known after apply)
+      + instance_id           = (known after apply)
+      + name                  = (known after apply)
+      + password              = (sensitive value)
+      + reset_permission_flag = false
+      + status                = (known after apply)
+      + type                  = (known after apply)
+    }
+
+  # alicloud_db_database.database will be created
+  + resource "alicloud_db_database" "database" {
+      + character_set = "utf8"
+      + id            = (known after apply)
+      + instance_id   = (known after apply)
+      + name          = "sbtest"
+    }
+
+  # alicloud_db_instance.rds will be created
+  + resource "alicloud_db_instance" "rds" {
+      + acl                        = (known after apply)
+      + auto_upgrade_minor_version = (known after apply)
+      + babelfish_port             = (known after apply)
+      + ca_type                    = (known after apply)
+      + category                   = "HighAvailability"
+      + connection_string          = (known after apply)
+      + connection_string_prefix   = (known after apply)
+      + create_time                = (known after apply)
+      + db_instance_storage_type   = "local_ssd"
+      + db_instance_type           = (known after apply)
+      + db_is_ignore_case          = (known after apply)
+      + db_time_zone               = (known after apply)
+      + deletion_protection        = false
+      + engine                     = "MySQL"
+      + engine_version             = "8.0"
+      + force_restart              = false
+      + ha_config                  = (known after apply)
+      + id                         = (known after apply)
+      + instance_charge_type       = "Postpaid"
+      + instance_name              = "sysbench"
+      + instance_storage           = 100
+      + instance_type              = "rds.mysql.s3.large"
+      + maintain_time              = (known after apply)
+      + monitoring_period          = (known after apply)
+      + node_id                    = (known after apply)
+      + port                       = (known after apply)
+      + private_ip_address         = (known after apply)
+      + replication_acl            = (known after apply)
+      + resource_group_id          = (known after apply)
+      + role_arn                   = (known after apply)
+      + security_group_id          = (known after apply)
+      + security_group_ids         = (known after apply)
+      + security_ip_mode           = "normal"
+      + security_ips               = [
+          + "192.168.0.0/24",
+        ]
+      + server_cert                = (known after apply)
+      + server_key                 = (known after apply)
+      + sql_collector_config_value = 30
+      + sql_collector_status       = (known after apply)
+      + ssl_action                 = (known after apply)
+      + ssl_connection_string      = (known after apply)
+      + ssl_status                 = (known after apply)
+      + status                     = (known after apply)
+      + target_minor_version       = (known after apply)
+      + tcp_connection_type        = (known after apply)
+      + tde_status                 = (known after apply)
+      + vpc_id                     = (known after apply)
+      + vswitch_id                 = (known after apply)
+      + zone_id                    = "ap-southeast-1c"
+      + zone_id_slave_a            = "ap-southeast-1b"
+      + zone_id_slave_b            = (known after apply)
+    }
+
+  # alicloud_eci_container_group.container will be created
+  + resource "alicloud_eci_container_group" "container" {
+      + auto_create_eip        = true
+      + auto_match_image_cache = (known after apply)
+      + container_group_name   = "sysbench"
+      + cpu                    = 4
+      + eip_bandwidth          = 1
+      + id                     = (known after apply)
+      + instance_type          = (known after apply)
+      + internet_ip            = (known after apply)
+      + intranet_ip            = (known after apply)
+      + memory                 = 2
+      + resource_group_id      = (known after apply)
+      + restart_policy         = "Never"
+      + security_group_id      = (known after apply)
+      + spot_price_limit       = (known after apply)
+      + spot_strategy          = (known after apply)
+      + status                 = (known after apply)
+      + vswitch_id             = (known after apply)
+      + zone_id                = (known after apply)
+
+      + containers {
+          + commands          = [
+              + "/bin/sh",
+              + "-c",
+              + "/usr/sbin/sshd && sleep infinity",
+            ]
+          + cpu               = 0
+          + gpu               = 0
+          + image             = "registry.cn-hangzhou.aliyuncs.com/ninedata_public/sysbench:latest"
+          + image_pull_policy = "IfNotPresent"
+          + memory            = 0
+          + name              = "sysbench"
+          + ready             = (known after apply)
+          + restart_count     = (known after apply)
+
+          + ports {
+              + port     = 22
+              + protocol = "TCP"
+            }
+        }
+    }
+
+  # alicloud_security_group.security_group will be created
+  + resource "alicloud_security_group" "security_group" {
+      + id                  = (known after apply)
+      + inner_access        = (known after apply)
+      + inner_access_policy = (known after apply)
+      + name                = "sysbench"
+      + security_group_type = (known after apply)
+      + vpc_id              = (known after apply)
+    }
+
+  # alicloud_security_group_rule.allow_host will be created
+  + resource "alicloud_security_group_rule" "allow_host" {
+      + cidr_ip           = "220.184.76.228/32"
+      + id                = (known after apply)
+      + ip_protocol       = "tcp"
+      + nic_type          = "intranet"
+      + policy            = "accept"
+      + port_range        = "22/22"
+      + prefix_list_id    = (known after apply)
+      + priority          = 1
+      + security_group_id = (known after apply)
+      + type              = "ingress"
+    }
+
+  # alicloud_vpc.vpc will be created
+  + resource "alicloud_vpc" "vpc" {
+      + cidr_block            = "192.168.0.0/24"
+      + create_time           = (known after apply)
+      + id                    = (known after apply)
+      + ipv6_cidr_block       = (known after apply)
+      + ipv6_cidr_blocks      = (known after apply)
+      + name                  = (known after apply)
+      + resource_group_id     = (known after apply)
+      + route_table_id        = (known after apply)
+      + router_id             = (known after apply)
+      + router_table_id       = (known after apply)
+      + secondary_cidr_blocks = (known after apply)
+      + status                = (known after apply)
+      + user_cidrs            = (known after apply)
+      + vpc_name              = "sysbench"
+    }
+
+  # alicloud_vswitch.vsw will be created
+  + resource "alicloud_vswitch" "vsw" {
+      + availability_zone    = (known after apply)
+      + cidr_block           = "192.168.0.0/26"
+      + create_time          = (known after apply)
+      + id                   = (known after apply)
+      + ipv6_cidr_block      = (known after apply)
+      + ipv6_cidr_block_mask = (known after apply)
+      + name                 = (known after apply)
+      + status               = (known after apply)
+      + vpc_id               = (known after apply)
+      + vswitch_name         = (known after apply)
+      + zone_id              = "ap-southeast-1c"
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + container = true
+  + database  = "alicloud_db_database.database"
+  + db_port   = 3306
+  + db_pwd    = "DBPassword123"
+  + db_user   = "sbtest"
+  + host      = (known after apply)
+  + url       = (known after apply)
+  + user      = "root"
+alicloud_vpc.vpc: Creating...
+alicloud_vpc.vpc: Creation complete after 7s [id=vpc-t4nigobvryzg41doppioe]
+alicloud_vswitch.vsw: Creating...
+alicloud_vswitch.vsw: Creation complete after 4s [id=vsw-t4nita7j5l5t53fkgxj28]
+alicloud_security_group.security_group: Creating...
+alicloud_security_group.security_group: Creation complete after 2s [id=sg-t4nhxy5xdmowd17vjz1r]
+alicloud_security_group_rule.allow_host: Creating...
+alicloud_db_instance.rds: Creating...
+alicloud_security_group_rule.allow_host: Creation complete after 1s [id=sg-t4nhxy5xdmowd17vjz1r:ingress:tcp:22/22:intranet:220.184.76.228/32:accept:1]
+alicloud_db_instance.rds: Still creating... [10s elapsed]
+alicloud_db_instance.rds: Still creating... [20s elapsed]
+alicloud_db_instance.rds: Still creating... [30s elapsed]
+alicloud_db_instance.rds: Still creating... [40s elapsed]
+alicloud_db_instance.rds: Still creating... [50s elapsed]
+alicloud_db_instance.rds: Still creating... [1m0s elapsed]
+alicloud_db_instance.rds: Still creating... [1m10s elapsed]
+alicloud_db_instance.rds: Still creating... [1m20s elapsed]
+alicloud_db_instance.rds: Still creating... [1m30s elapsed]
+alicloud_db_instance.rds: Still creating... [1m40s elapsed]
+alicloud_db_instance.rds: Still creating... [1m50s elapsed]
+alicloud_db_instance.rds: Still creating... [2m0s elapsed]
+alicloud_db_instance.rds: Still creating... [2m10s elapsed]
+alicloud_db_instance.rds: Still creating... [2m20s elapsed]
+alicloud_db_instance.rds: Still creating... [2m30s elapsed]
+alicloud_db_instance.rds: Still creating... [2m40s elapsed]
+alicloud_db_instance.rds: Still creating... [2m50s elapsed]
+alicloud_db_instance.rds: Still creating... [3m0s elapsed]
+alicloud_db_instance.rds: Still creating... [3m10s elapsed]
+alicloud_db_instance.rds: Still creating... [3m20s elapsed]
+alicloud_db_instance.rds: Creation complete after 3m27s [id=rm-t4nq665l1qz85f29j]
+alicloud_db_database.database: Creating...
+alicloud_db_account.account: Creating...
+alicloud_db_database.database: Creation complete after 1s [id=rm-t4nq665l1qz85f29j:sbtest]
+alicloud_db_account.account: Still creating... [10s elapsed]
+alicloud_db_account.account: Still creating... [20s elapsed]
+alicloud_db_account.account: Still creating... [30s elapsed]
+alicloud_db_account.account: Still creating... [40s elapsed]
+alicloud_db_account.account: Still creating... [50s elapsed]
+alicloud_db_account.account: Creation complete after 51s [id=rm-t4nq665l1qz85f29j:sbtest]
+alicloud_eci_container_group.container: Creating...
+alicloud_eci_container_group.container: Still creating... [10s elapsed]
+alicloud_eci_container_group.container: Still creating... [20s elapsed]
+alicloud_eci_container_group.container: Still creating... [30s elapsed]
+alicloud_eci_container_group.container: Still creating... [40s elapsed]
+alicloud_eci_container_group.container: Still creating... [50s elapsed]
+alicloud_eci_container_group.container: Still creating... [1m0s elapsed]
+alicloud_eci_container_group.container: Still creating... [1m10s elapsed]
+alicloud_eci_container_group.container: Still creating... [1m20s elapsed]
+alicloud_eci_container_group.container: Still creating... [1m30s elapsed]
+alicloud_eci_container_group.container: Still creating... [1m40s elapsed]
+alicloud_eci_container_group.container: Creation complete after 1m43s [id=eci-t4nfd8u3zlk3oitsgrdz]
+
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+container = true
+database = "alicloud_db_database.database"
+db_port = 3306
+db_pwd = "DBPassword123"
+db_user = "sbtest"
+host = "47.236.187.3"
+url = "rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com"
+user = "root"
+wait db start...
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --threads=20 oltp_read_write prepare
+Warning: Permanently added '47.236.187.3' (ECDSA) to the list of known hosts.
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Initializing worker threads...
+
+Creating table 'sbtest9'...Creating table 'sbtest2'...
+
+Creating table 'sbtest3'...
+Creating table 'sbtest5'...
+Creating table 'sbtest8'...
+Creating table 'sbtest1'...
+Creating table 'sbtest7'...
+Creating table 'sbtest10'...
+Creating table 'sbtest6'...
+Creating table 'sbtest4'...
+Inserting 10000000 records into 'sbtest2'
+Inserting 10000000 records into 'sbtest3'
+Inserting 10000000 records into 'sbtest1'
+Inserting 10000000 records into 'sbtest7'
+Inserting 10000000 records into 'sbtest8'
+Inserting 10000000 records into 'sbtest9'
+Inserting 10000000 records into 'sbtest10'
+Inserting 10000000 records into 'sbtest4'
+Inserting 10000000 records into 'sbtest5'
+Inserting 10000000 records into 'sbtest6'
+Creating a secondary index on 'sbtest8'...
+Creating a secondary index on 'sbtest1'...
+Creating a secondary index on 'sbtest6'...
+Creating a secondary index on 'sbtest9'...
+Creating a secondary index on 'sbtest5'...
+Creating a secondary index on 'sbtest10'...
+Creating a secondary index on 'sbtest2'...
+Creating a secondary index on 'sbtest7'...
+Creating a secondary index on 'sbtest3'...
+Creating a secondary index on 'sbtest4'...
+****************************** 4 threads ******************************
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=4  --percentile=99  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 4
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 4 tps: 518.42 qps: 10375.07 (r/w/o: 7263.36/2074.48/1037.24) lat (ms,99%): 64.47 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 4 tps: 577.91 qps: 11557.03 (r/w/o: 8090.29/2310.93/1155.81) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 4 tps: 560.80 qps: 11214.64 (r/w/o: 7849.96/2243.09/1121.59) lat (ms,99%): 75.82 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 4 tps: 541.90 qps: 10839.61 (r/w/o: 7587.61/2168.20/1083.80) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 4 tps: 563.10 qps: 11262.61 (r/w/o: 7884.11/2252.30/1126.20) lat (ms,99%): 74.46 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 4 tps: 531.70 qps: 10633.48 (r/w/o: 7443.79/2126.30/1063.40) lat (ms,99%): 92.42 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 4 tps: 541.00 qps: 10821.42 (r/w/o: 7574.01/2165.40/1082.00) lat (ms,99%): 92.42 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 4 tps: 548.60 qps: 10970.17 (r/w/o: 7679.58/2193.39/1097.20) lat (ms,99%): 87.56 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 4 tps: 535.90 qps: 10718.43 (r/w/o: 7503.42/2143.21/1071.80) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 4 tps: 545.60 qps: 10913.20 (r/w/o: 7638.40/2183.60/1091.20) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 4 tps: 548.10 qps: 10960.01 (r/w/o: 7671.81/2192.00/1096.20) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 4 tps: 521.50 qps: 10430.94 (r/w/o: 7302.36/2085.59/1042.99) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 4 tps: 545.90 qps: 10919.44 (r/w/o: 7642.83/2184.81/1091.80) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 4 tps: 518.10 qps: 10361.00 (r/w/o: 7253.40/2071.40/1036.20) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 4 tps: 541.00 qps: 10819.80 (r/w/o: 7574.00/2163.80/1082.00) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 4 tps: 565.30 qps: 11305.78 (r/w/o: 7913.78/2261.40/1130.60) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 4 tps: 577.90 qps: 11559.42 (r/w/o: 8091.02/2312.60/1155.80) lat (ms,99%): 70.55 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 4 tps: 603.30 qps: 12062.71 (r/w/o: 8444.14/2411.98/1206.59) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 4 tps: 634.80 qps: 12695.44 (r/w/o: 8886.73/2539.21/1269.50) lat (ms,99%): 30.26 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 4 tps: 650.90 qps: 13017.50 (r/w/o: 9112.00/2603.60/1301.90) lat (ms,99%): 18.61 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 4 tps: 680.49 qps: 13610.50 (r/w/o: 9527.93/2721.58/1360.99) lat (ms,99%): 7.30 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 4 tps: 693.20 qps: 13863.46 (r/w/o: 9703.94/2773.11/1386.41) lat (ms,99%): 7.04 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 4 tps: 683.80 qps: 13676.60 (r/w/o: 9574.13/2734.88/1367.59) lat (ms,99%): 6.43 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 4 tps: 713.50 qps: 14270.40 (r/w/o: 9988.60/2854.80/1427.00) lat (ms,99%): 6.43 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 4 tps: 706.60 qps: 14130.24 (r/w/o: 9891.43/2825.61/1413.20) lat (ms,99%): 6.43 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 4 tps: 728.70 qps: 14576.03 (r/w/o: 10203.42/2915.21/1457.40) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 4 tps: 722.70 qps: 14453.58 (r/w/o: 10117.46/2890.82/1445.31) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 4 tps: 713.60 qps: 14272.51 (r/w/o: 9990.73/2854.48/1427.29) lat (ms,99%): 6.43 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 4 tps: 744.60 qps: 14892.59 (r/w/o: 10424.99/2978.40/1489.20) lat (ms,99%): 6.43 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 4 tps: 744.20 qps: 14883.02 (r/w/o: 10418.22/2976.40/1488.40) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 4 tps: 745.80 qps: 14915.59 (r/w/o: 10440.60/2983.40/1491.60) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 4 tps: 744.10 qps: 14883.47 (r/w/o: 10418.78/2976.49/1488.20) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 4 tps: 729.50 qps: 14586.56 (r/w/o: 10209.77/2917.99/1458.80) lat (ms,99%): 6.43 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 4 tps: 746.70 qps: 14935.69 (r/w/o: 10455.29/2986.80/1493.60) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 4 tps: 758.90 qps: 15179.82 (r/w/o: 10626.81/3035.20/1517.80) lat (ms,99%): 6.21 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 4 tps: 749.59 qps: 14989.67 (r/w/o: 10492.11/2998.37/1499.19) lat (ms,99%): 6.32 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            3188948
+        write:                           911128
+        other:                           455564
+        total:                           4555640
+    transactions:                        227782 (632.71 per sec.)
+    queries:                             4555640 (12654.30 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0059s
+    total number of events:              227782
+
+Latency (ms):
+         min:                                    4.43
+         avg:                                    6.32
+         max:                                  384.18
+         99th percentile:                       32.53
+         sum:                              1439563.94
+
+Threads fairness:
+    events (avg/stddev):           56945.5000/134.94
+    execution time (avg/stddev):   359.8910/0.00
+
+****************************** 8 threads ******************************
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=8  --percentile=99  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 8
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 8 tps: 1457.24 qps: 29155.95 (r/w/o: 20410.82/5829.85/2915.27) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 8 tps: 1444.83 qps: 28891.51 (r/w/o: 20223.25/5778.70/2889.55) lat (ms,99%): 6.55 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 8 tps: 1444.11 qps: 28886.98 (r/w/o: 20221.43/5777.24/2888.32) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 8 tps: 1448.11 qps: 28963.50 (r/w/o: 20274.44/5792.84/2896.22) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 8 tps: 1425.45 qps: 28506.79 (r/w/o: 19955.06/5700.82/2850.91) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 8 tps: 1449.63 qps: 28991.94 (r/w/o: 20293.48/5799.21/2899.25) lat (ms,99%): 6.55 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 8 tps: 1414.51 qps: 28291.07 (r/w/o: 19803.72/5658.33/2829.02) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 8 tps: 1434.10 qps: 28683.47 (r/w/o: 20079.58/5735.69/2868.20) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 8 tps: 1432.89 qps: 28656.86 (r/w/o: 20059.40/5731.67/2865.79) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 8 tps: 1350.60 qps: 27006.21 (r/w/o: 18903.30/5401.70/2701.20) lat (ms,99%): 7.43 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 8 tps: 1352.10 qps: 27042.61 (r/w/o: 18930.00/5408.70/2703.90) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 8 tps: 1303.81 qps: 26082.30 (r/w/o: 18258.64/5215.74/2607.92) lat (ms,99%): 9.06 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 8 tps: 1341.09 qps: 26818.15 (r/w/o: 18772.20/5363.77/2682.19) lat (ms,99%): 7.04 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 8 tps: 1376.40 qps: 27526.60 (r/w/o: 19268.53/5505.28/2752.79) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 8 tps: 1303.51 qps: 26072.07 (r/w/o: 18250.09/5214.95/2607.03) lat (ms,99%): 7.98 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 8 tps: 1343.00 qps: 26860.33 (r/w/o: 18802.35/5372.09/2685.89) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 8 tps: 1407.90 qps: 28157.92 (r/w/o: 19710.75/5631.38/2815.79) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 8 tps: 1394.31 qps: 27885.93 (r/w/o: 19520.09/5577.13/2788.71) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 8 tps: 1411.79 qps: 28238.96 (r/w/o: 19767.70/5647.67/2823.59) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 8 tps: 1387.80 qps: 27752.67 (r/w/o: 19426.78/5550.29/2775.60) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 8 tps: 1345.59 qps: 26915.44 (r/w/o: 18840.79/5383.47/2691.18) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 8 tps: 1311.71 qps: 26231.70 (r/w/o: 18362.24/5246.04/2623.42) lat (ms,99%): 7.17 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 8 tps: 1328.08 qps: 26563.57 (r/w/o: 18594.97/5312.43/2656.17) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 8 tps: 1306.70 qps: 26129.63 (r/w/o: 18290.05/5226.19/2613.39) lat (ms,99%): 7.04 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 8 tps: 1354.40 qps: 27090.31 (r/w/o: 18963.41/5418.10/2708.80) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 8 tps: 1336.80 qps: 26738.47 (r/w/o: 18717.08/5347.79/2673.60) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 8 tps: 1366.30 qps: 27325.99 (r/w/o: 19127.89/5465.50/2732.60) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 8 tps: 1364.60 qps: 27290.60 (r/w/o: 19103.07/5458.32/2729.21) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 8 tps: 1373.40 qps: 27469.69 (r/w/o: 19229.16/5493.72/2746.81) lat (ms,99%): 7.04 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 8 tps: 1413.06 qps: 28258.38 (r/w/o: 19781.30/5650.96/2826.13) lat (ms,99%): 6.67 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 8 tps: 1392.93 qps: 27861.24 (r/w/o: 19501.98/5573.41/2785.85) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 8 tps: 1401.90 qps: 28037.05 (r/w/o: 19627.06/5606.19/2803.79) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 8 tps: 1407.60 qps: 28154.00 (r/w/o: 19707.37/5631.42/2815.21) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 8 tps: 1358.40 qps: 27164.44 (r/w/o: 19014.56/5433.09/2716.79) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 8 tps: 1311.79 qps: 26237.78 (r/w/o: 18366.15/5248.06/2623.58) lat (ms,99%): 7.04 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 8 tps: 1361.81 qps: 27235.29 (r/w/o: 19065.93/5445.74/2723.62) lat (ms,99%): 6.79 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            6952302
+        write:                           1986372
+        other:                           993186
+        total:                           9931860
+    transactions:                        496593 (1378.74 per sec.)
+    queries:                             9931860 (27574.88 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.1764s
+    total number of events:              496593
+
+Latency (ms):
+         min:                                    4.43
+         avg:                                    5.80
+         max:                                  308.52
+         99th percentile:                        6.79
+         sum:                              2879240.66
+
+Threads fairness:
+    events (avg/stddev):           62074.1250/477.06
+    execution time (avg/stddev):   359.9051/0.06
+
+****************************** 16 threads ******************************
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=16  --percentile=99  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 16
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 16 tps: 2497.58 qps: 49971.42 (r/w/o: 34983.16/9991.50/4996.75) lat (ms,99%): 15.55 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 16 tps: 2420.92 qps: 48417.56 (r/w/o: 33891.55/9684.17/4841.84) lat (ms,99%): 16.41 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 16 tps: 2426.45 qps: 48528.05 (r/w/o: 33970.26/9704.89/4852.89) lat (ms,99%): 17.63 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 16 tps: 2394.25 qps: 47888.20 (r/w/o: 33521.20/9578.50/4788.50) lat (ms,99%): 16.12 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 16 tps: 2369.32 qps: 47375.33 (r/w/o: 33161.50/9475.19/4738.64) lat (ms,99%): 17.01 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 16 tps: 2363.17 qps: 47268.33 (r/w/o: 33088.00/9454.19/4726.14) lat (ms,99%): 18.28 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 16 tps: 2292.80 qps: 45854.89 (r/w/o: 32099.06/9170.22/4585.61) lat (ms,99%): 21.89 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 16 tps: 2263.17 qps: 45269.03 (r/w/o: 31688.40/9054.09/4526.54) lat (ms,99%): 22.69 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 16 tps: 2329.45 qps: 46582.84 (r/w/o: 32607.55/9316.49/4658.79) lat (ms,99%): 15.27 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 16 tps: 2328.77 qps: 46577.87 (r/w/o: 32605.46/9314.77/4657.64) lat (ms,99%): 16.71 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 16 tps: 2360.82 qps: 47214.64 (r/w/o: 33049.61/9443.39/4721.64) lat (ms,99%): 18.28 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 16 tps: 2394.77 qps: 47899.16 (r/w/o: 33529.15/9580.77/4789.24) lat (ms,99%): 16.41 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 16 tps: 2372.09 qps: 47443.59 (r/w/o: 33211.55/9487.56/4744.48) lat (ms,99%): 17.63 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 16 tps: 2335.75 qps: 46711.99 (r/w/o: 32697.46/9343.22/4671.31) lat (ms,99%): 19.65 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 16 tps: 2271.35 qps: 45424.41 (r/w/o: 31797.54/9083.98/4542.89) lat (ms,99%): 20.37 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 16 tps: 2178.09 qps: 43560.64 (r/w/o: 30492.12/8712.35/4356.17) lat (ms,99%): 44.17 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 16 tps: 2378.61 qps: 47573.61 (r/w/o: 33302.08/9514.32/4757.21) lat (ms,99%): 16.71 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 16 tps: 2346.35 qps: 46929.22 (r/w/o: 32850.52/9386.00/4692.70) lat (ms,99%): 19.29 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 16 tps: 2355.51 qps: 47110.01 (r/w/o: 32977.18/9421.82/4711.01) lat (ms,99%): 18.95 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 16 tps: 2378.31 qps: 47565.09 (r/w/o: 33295.43/9513.04/4756.62) lat (ms,99%): 17.95 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 16 tps: 2345.69 qps: 46914.22 (r/w/o: 32839.27/9383.66/4691.28) lat (ms,99%): 18.61 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 16 tps: 2249.61 qps: 44992.92 (r/w/o: 31495.98/8997.62/4499.31) lat (ms,99%): 27.66 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 16 tps: 2191.59 qps: 43830.13 (r/w/o: 30680.91/8766.05/4383.17) lat (ms,99%): 27.66 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 16 tps: 2323.00 qps: 46466.58 (r/w/o: 32525.95/9294.62/4646.01) lat (ms,99%): 19.29 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 16 tps: 2328.49 qps: 46565.79 (r/w/o: 32596.95/9311.86/4656.98) lat (ms,99%): 18.28 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 16 tps: 2290.28 qps: 45805.53 (r/w/o: 32062.94/9162.03/4580.56) lat (ms,99%): 24.38 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 16 tps: 2361.13 qps: 47228.22 (r/w/o: 33061.53/9444.42/4722.26) lat (ms,99%): 20.00 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 16 tps: 2362.59 qps: 47245.20 (r/w/o: 33070.06/9450.36/4724.78) lat (ms,99%): 16.71 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 16 tps: 2308.99 qps: 46173.07 (r/w/o: 32320.74/9234.45/4617.88) lat (ms,99%): 21.89 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 16 tps: 2211.00 qps: 44226.50 (r/w/o: 30959.10/8844.90/4422.50) lat (ms,99%): 38.94 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 16 tps: 2292.20 qps: 45841.16 (r/w/o: 32088.74/9168.01/4584.41) lat (ms,99%): 18.61 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 16 tps: 2367.79 qps: 47364.17 (r/w/o: 33155.61/9472.97/4735.59) lat (ms,99%): 15.83 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 16 tps: 2323.91 qps: 46476.24 (r/w/o: 32533.07/9295.35/4647.82) lat (ms,99%): 18.61 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 16 tps: 2354.60 qps: 47087.63 (r/w/o: 32960.95/9417.49/4709.19) lat (ms,99%): 17.63 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 16 tps: 2341.38 qps: 46831.90 (r/w/o: 32782.02/9367.22/4682.66) lat (ms,99%): 21.11 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 16 tps: 2309.83 qps: 46192.13 (r/w/o: 32334.67/9237.71/4619.75) lat (ms,99%): 21.50 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            11763052
+        write:                           3360872
+        other:                           1680436
+        total:                           16804360
+    transactions:                        840218 (2333.87 per sec.)
+    queries:                             16804360 (46677.43 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0090s
+    total number of events:              840218
+
+Latency (ms):
+         min:                                    4.46
+         avg:                                    6.85
+         max:                                  404.76
+         99th percentile:                       18.61
+         sum:                              5758256.65
+
+Threads fairness:
+    events (avg/stddev):           52513.6250/1182.03
+    execution time (avg/stddev):   359.8910/0.00
+
+****************************** 32 threads ******************************
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=32  --percentile=99  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 32
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 32 tps: 2519.71 qps: 50418.34 (r/w/o: 35296.70/10079.03/5042.61) lat (ms,99%): 41.85 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 32 tps: 2506.82 qps: 50143.20 (r/w/o: 35102.18/10027.38/5013.64) lat (ms,99%): 41.85 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 32 tps: 2510.60 qps: 50221.08 (r/w/o: 35153.85/10046.02/5021.21) lat (ms,99%): 42.61 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 32 tps: 2497.30 qps: 49931.13 (r/w/o: 34951.05/9985.49/4994.59) lat (ms,99%): 43.39 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 32 tps: 2497.50 qps: 49948.73 (r/w/o: 34963.75/9989.99/4994.99) lat (ms,99%): 56.84 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 32 tps: 2496.70 qps: 49935.68 (r/w/o: 34955.68/9986.60/4993.40) lat (ms,99%): 43.39 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 32 tps: 2435.91 qps: 48724.62 (r/w/o: 34108.28/9744.52/4871.81) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 32 tps: 2332.02 qps: 46639.09 (r/w/o: 32645.84/9329.20/4664.05) lat (ms,99%): 87.56 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 32 tps: 2489.09 qps: 49789.67 (r/w/o: 34851.11/9960.37/4978.19) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 32 tps: 2517.60 qps: 50358.99 (r/w/o: 35252.86/10070.92/5035.21) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 32 tps: 2480.49 qps: 49604.31 (r/w/o: 34723.57/9919.76/4960.98) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 32 tps: 2514.11 qps: 50271.64 (r/w/o: 35187.50/10055.93/5028.21) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 32 tps: 2496.53 qps: 49953.15 (r/w/o: 34968.76/9991.63/4992.76) lat (ms,99%): 56.84 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 32 tps: 2526.47 qps: 50516.64 (r/w/o: 35362.41/10101.29/5052.94) lat (ms,99%): 52.89 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 32 tps: 2375.89 qps: 47508.49 (r/w/o: 33252.83/9503.98/4751.69) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 32 tps: 2487.00 qps: 49740.31 (r/w/o: 34819.61/9946.30/4974.40) lat (ms,99%): 54.83 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 32 tps: 2508.35 qps: 50172.21 (r/w/o: 35121.91/10033.80/5016.50) lat (ms,99%): 53.85 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 32 tps: 2429.84 qps: 48590.14 (r/w/o: 34011.02/9719.25/4859.87) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 32 tps: 2503.32 qps: 50073.98 (r/w/o: 35053.26/10014.08/5006.64) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 32 tps: 2450.60 qps: 48999.86 (r/w/o: 34299.58/9799.79/4900.50) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 32 tps: 2510.74 qps: 50244.05 (r/w/o: 35171.72/10050.15/5022.17) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 32 tps: 2334.67 qps: 46685.13 (r/w/o: 32681.60/9334.19/4669.34) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 32 tps: 2505.71 qps: 50118.02 (r/w/o: 35082.15/10024.54/5011.32) lat (ms,99%): 58.92 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 32 tps: 2493.89 qps: 49870.83 (r/w/o: 34910.01/9972.95/4987.87) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 32 tps: 2419.20 qps: 48382.63 (r/w/o: 33869.95/9674.49/4838.19) lat (ms,99%): 65.65 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 32 tps: 2507.03 qps: 50142.29 (r/w/o: 35096.91/10031.62/5013.76) lat (ms,99%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 32 tps: 2485.05 qps: 49699.30 (r/w/o: 34791.07/9937.62/4970.61) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 32 tps: 2480.72 qps: 49608.72 (r/w/o: 34725.62/9921.66/4961.43) lat (ms,99%): 63.32 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 32 tps: 2325.32 qps: 46521.91 (r/w/o: 32562.78/9308.68/4650.44) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 32 tps: 2502.58 qps: 50045.73 (r/w/o: 35033.27/10007.11/5005.35) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 32 tps: 2515.80 qps: 50311.98 (r/w/o: 35218.16/10062.22/5031.61) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 32 tps: 2483.72 qps: 49678.08 (r/w/o: 34774.26/9936.38/4967.44) lat (ms,99%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 32 tps: 2515.89 qps: 50319.15 (r/w/o: 35224.02/10063.35/5031.77) lat (ms,99%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 32 tps: 2515.49 qps: 50304.94 (r/w/o: 35214.02/10059.95/5030.97) lat (ms,99%): 55.82 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 32 tps: 2458.22 qps: 49171.38 (r/w/o: 34419.04/9835.90/4916.45) lat (ms,99%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 32 tps: 2405.65 qps: 48105.54 (r/w/o: 33672.93/9621.51/4811.10) lat (ms,99%): 73.13 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            12465488
+        write:                           3561568
+        other:                           1780784
+        total:                           17807840
+    transactions:                        890392 (2473.19 per sec.)
+    queries:                             17807840 (49463.85 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0159s
+    total number of events:              890392
+
+Latency (ms):
+         min:                                    4.42
+         avg:                                   12.94
+         max:                                  452.67
+         99th percentile:                       58.92
+         sum:                             11517261.29
+
+Threads fairness:
+    events (avg/stddev):           27824.7500/634.59
+    execution time (avg/stddev):   359.9144/0.01
+
+****************************** 64 threads ******************************
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=64  --percentile=99  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 64
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 64 tps: 2507.68 qps: 50202.35 (r/w/o: 35150.05/10031.43/5020.86) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 64 tps: 2540.02 qps: 50797.85 (r/w/o: 35557.31/10160.39/5080.14) lat (ms,99%): 81.48 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 64 tps: 2519.50 qps: 50396.29 (r/w/o: 35279.36/10077.72/5039.21) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 64 tps: 2514.81 qps: 50300.17 (r/w/o: 35210.19/10060.15/5029.83) lat (ms,99%): 81.48 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 64 tps: 2512.90 qps: 50252.17 (r/w/o: 35176.18/10050.49/5025.50) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 64 tps: 2342.44 qps: 46844.20 (r/w/o: 32789.26/9369.66/4685.28) lat (ms,99%): 118.92 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 64 tps: 2415.05 qps: 48295.84 (r/w/o: 33806.32/9660.11/4829.40) lat (ms,99%): 92.42 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 64 tps: 2346.29 qps: 46933.70 (r/w/o: 32855.29/9385.54/4692.87) lat (ms,99%): 137.35 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 64 tps: 2514.80 qps: 50290.28 (r/w/o: 35201.65/10059.42/5029.21) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 64 tps: 2499.10 qps: 49992.03 (r/w/o: 34997.32/9996.11/4998.60) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 64 tps: 2490.68 qps: 49811.38 (r/w/o: 34867.48/9962.24/4981.67) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 64 tps: 2516.41 qps: 50327.83 (r/w/o: 35229.16/10066.25/5032.42) lat (ms,99%): 81.48 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 64 tps: 2402.00 qps: 48035.76 (r/w/o: 33624.17/9607.69/4803.90) lat (ms,99%): 97.55 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 64 tps: 2465.33 qps: 49300.93 (r/w/o: 34508.67/9861.61/4930.65) lat (ms,99%): 87.56 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 64 tps: 2444.19 qps: 48894.40 (r/w/o: 34228.89/9777.24/4888.27) lat (ms,99%): 89.16 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 64 tps: 2475.22 qps: 49493.06 (r/w/o: 34643.05/9899.87/4950.14) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 64 tps: 2481.12 qps: 49634.29 (r/w/o: 34746.07/9925.58/4962.64) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 64 tps: 2501.45 qps: 50023.07 (r/w/o: 35015.15/10004.81/5003.11) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 64 tps: 2506.63 qps: 50127.29 (r/w/o: 35087.29/10026.64/5013.37) lat (ms,99%): 80.03 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 64 tps: 2373.55 qps: 47470.89 (r/w/o: 33229.96/9494.22/4746.71) lat (ms,99%): 167.44 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 64 tps: 2486.14 qps: 49728.85 (r/w/o: 34810.99/9945.47/4972.38) lat (ms,99%): 81.48 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 64 tps: 2452.01 qps: 49046.90 (r/w/o: 34335.04/9807.84/4904.02) lat (ms,99%): 97.55 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 64 tps: 2488.81 qps: 49767.52 (r/w/o: 34835.08/9954.62/4977.81) lat (ms,99%): 84.47 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 64 tps: 2506.83 qps: 50135.17 (r/w/o: 35094.27/10027.93/5012.97) lat (ms,99%): 84.47 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 64 tps: 2519.84 qps: 50401.46 (r/w/o: 35282.53/10078.55/5040.38) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 64 tps: 2476.12 qps: 49536.16 (r/w/o: 34678.32/9905.39/4952.45) lat (ms,99%): 84.47 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 64 tps: 2318.28 qps: 46350.89 (r/w/o: 32441.91/9272.72/4636.26) lat (ms,99%): 127.81 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 64 tps: 2488.66 qps: 49778.99 (r/w/o: 34847.80/9954.16/4977.03) lat (ms,99%): 90.78 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 64 tps: 2488.35 qps: 49769.19 (r/w/o: 34838.59/9953.30/4977.30) lat (ms,99%): 87.56 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 64 tps: 2517.22 qps: 50343.83 (r/w/o: 35239.70/10069.99/5034.14) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 64 tps: 2516.38 qps: 50319.99 (r/w/o: 35221.29/10065.44/5033.27) lat (ms,99%): 82.96 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 64 tps: 2472.55 qps: 49460.02 (r/w/o: 34625.02/9890.10/4944.90) lat (ms,99%): 78.60 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 64 tps: 2457.00 qps: 49128.27 (r/w/o: 34387.65/9827.31/4913.31) lat (ms,99%): 86.00 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 64 tps: 2280.92 qps: 45621.72 (r/w/o: 31935.49/9124.18/4562.04) lat (ms,99%): 179.94 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 64 tps: 2424.50 qps: 48480.00 (r/w/o: 33933.30/9697.70/4849.00) lat (ms,99%): 90.78 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 64 tps: 2444.00 qps: 48880.68 (r/w/o: 34217.19/9775.90/4887.60) lat (ms,99%): 84.47 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            12419904
+        write:                           3548544
+        other:                           1774272
+        total:                           17742720
+    transactions:                        887136 (2463.95 per sec.)
+    queries:                             17742720 (49279.04 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0446s
+    total number of events:              887136
+
+Latency (ms):
+         min:                                    4.72
+         avg:                                   25.97
+         max:                                  472.87
+         99th percentile:                       84.47
+         sum:                             23034864.61
+
+Threads fairness:
+    events (avg/stddev):           13861.5000/780.81
+    execution time (avg/stddev):   359.9198/0.03
+
+****************************** 128 threads ******************************
+sysbench --db-driver=mysql --mysql-host=rm-t4nq665l1qz85f29j.mysql.singapore.rds.aliyuncs.com --mysql-port=3306 --mysql-user=sbtest --mysql-password=DBPassword123 --mysql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=128  --percentile=99  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 128
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 128 tps: 2525.90 qps: 50570.65 (r/w/o: 35400.36/10111.49/5058.79) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 128 tps: 2521.32 qps: 50427.40 (r/w/o: 35299.85/10086.00/5041.55) lat (ms,99%): 95.81 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 128 tps: 2477.87 qps: 49593.63 (r/w/o: 34720.03/9912.77/4960.83) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 128 tps: 2472.34 qps: 49412.66 (r/w/o: 34586.30/9887.77/4938.59) lat (ms,99%): 137.35 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 128 tps: 2442.68 qps: 48879.78 (r/w/o: 34215.71/9773.92/4890.16) lat (ms,99%): 139.85 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 128 tps: 2496.79 qps: 49901.08 (r/w/o: 34929.15/9983.56/4988.38) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 128 tps: 2512.80 qps: 50269.56 (r/w/o: 35190.67/10053.09/5025.80) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 128 tps: 2517.65 qps: 50365.19 (r/w/o: 35254.96/10071.92/5038.31) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 128 tps: 2477.41 qps: 49529.08 (r/w/o: 34669.53/9907.14/4952.42) lat (ms,99%): 139.85 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 128 tps: 2511.31 qps: 50257.03 (r/w/o: 35179.69/10051.13/5026.21) lat (ms,99%): 95.81 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 128 tps: 2501.65 qps: 50021.01 (r/w/o: 35017.21/10002.70/5001.10) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 128 tps: 2413.90 qps: 48290.92 (r/w/o: 33803.12/9657.30/4830.50) lat (ms,99%): 186.54 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 128 tps: 2503.87 qps: 50079.00 (r/w/o: 35058.71/10012.46/5007.83) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 128 tps: 2510.43 qps: 50206.92 (r/w/o: 35144.46/10042.00/5020.45) lat (ms,99%): 106.75 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 128 tps: 2533.32 qps: 50652.01 (r/w/o: 35454.62/10133.86/5063.53) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 128 tps: 2518.07 qps: 50376.22 (r/w/o: 35263.03/10073.26/5039.93) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 128 tps: 2515.03 qps: 50292.37 (r/w/o: 35204.17/10059.63/5028.57) lat (ms,99%): 97.55 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 128 tps: 2519.60 qps: 50384.40 (r/w/o: 35271.23/10076.68/5036.49) lat (ms,99%): 95.81 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 128 tps: 2424.58 qps: 48471.75 (r/w/o: 33927.16/9696.53/4848.07) lat (ms,99%): 153.02 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 128 tps: 2515.53 qps: 50331.93 (r/w/o: 35235.77/10063.91/5032.25) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 128 tps: 2456.81 qps: 49143.83 (r/w/o: 34404.49/9822.13/4917.21) lat (ms,99%): 125.52 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 128 tps: 2513.99 qps: 50275.97 (r/w/o: 35191.44/10055.95/5028.58) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 128 tps: 2437.61 qps: 48753.64 (r/w/o: 34129.27/9751.55/4872.82) lat (ms,99%): 112.67 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 128 tps: 2497.13 qps: 49949.75 (r/w/o: 34964.15/9989.03/4996.56) lat (ms,99%): 97.55 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 128 tps: 2506.66 qps: 50128.35 (r/w/o: 35090.07/10024.55/5013.72) lat (ms,99%): 108.68 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 128 tps: 2374.26 qps: 47484.13 (r/w/o: 33238.49/9497.73/4747.91) lat (ms,99%): 204.11 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 128 tps: 2533.09 qps: 50653.61 (r/w/o: 35457.37/10131.06/5065.18) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 128 tps: 2496.19 qps: 49933.62 (r/w/o: 34954.08/9987.16/4992.38) lat (ms,99%): 112.67 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 128 tps: 2506.90 qps: 50137.80 (r/w/o: 35095.47/10025.52/5016.81) lat (ms,99%): 104.84 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 128 tps: 2520.59 qps: 50408.60 (r/w/o: 35287.46/10082.56/5038.58) lat (ms,99%): 99.33 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 128 tps: 2515.26 qps: 50324.23 (r/w/o: 35227.76/10066.45/5030.02) lat (ms,99%): 97.55 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 128 tps: 2503.47 qps: 50057.69 (r/w/o: 35039.78/10011.48/5006.44) lat (ms,99%): 102.97 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 128 tps: 2436.88 qps: 48732.72 (r/w/o: 34111.37/9744.90/4876.45) lat (ms,99%): 164.45 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 128 tps: 2486.91 qps: 49744.58 (r/w/o: 34821.93/9950.64/4972.02) lat (ms,99%): 114.72 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 128 tps: 2489.21 qps: 49778.70 (r/w/o: 34844.54/9956.64/4977.52) lat (ms,99%): 101.13 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 128 tps: 2522.18 qps: 50449.28 (r/w/o: 35315.38/10086.84/5047.07) lat (ms,99%): 97.55 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            12561416
+        write:                           3588976
+        other:                           1794488
+        total:                           17944880
+    transactions:                        897244 (2491.84 per sec.)
+    queries:                             17944880 (49836.77 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0717s
+    total number of events:              897244
+
+Latency (ms):
+         min:                                    5.83
+         avg:                                   51.36
+         max:                                  535.05
+         99th percentile:                      108.68
+         sum:                             46079272.26
+
+Threads fairness:
+    events (avg/stddev):           7009.7188/442.98
+    execution time (avg/stddev):   359.9943/0.02

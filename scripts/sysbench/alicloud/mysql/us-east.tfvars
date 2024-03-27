@@ -1,0 +1,11 @@
+region = "us-east-1"
+zone = "us-east-1b"
+slave_zone = "us-east-1a"
+db_instance_type = "rds.mysql.s3.large"
+db_disk_size = 200
+db_disk_type = "local_ssd"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+db_category = "HighAvailability"
+cores = "4.0"
+memory = "2.0"

@@ -1,0 +1,12 @@
+region = "na-siliconvalley"
+zone = "na-siliconvalley-1"
+slave_zone = "na-siliconvalley-2"
+db_cpu = 4
+db_mem_size = 8000 
+db_disk_size = 100
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+key_name = "us_west"
+instance_type = "S2.LARGE8"
+instance_disk_type = "CLOUD_BSSD"
+public_key = "../../../image/authorized_keys"
