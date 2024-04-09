@@ -1,0 +1,1281 @@
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/google...
+- Installing hashicorp/google v5.23.0...
+- Installed hashicorp/google v5.23.0 (signed by HashiCorp)
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_compute_address.static_ip will be created
+  + resource "google_compute_address" "static_ip" {
+      + address            = (known after apply)
+      + address_type       = "EXTERNAL"
+      + creation_timestamp = (known after apply)
+      + effective_labels   = (known after apply)
+      + id                 = (known after apply)
+      + label_fingerprint  = (known after apply)
+      + name               = "sysbenchuseast4pg"
+      + network_tier       = "STANDARD"
+      + prefix_length      = (known after apply)
+      + project            = "constant-land-412302"
+      + purpose            = (known after apply)
+      + region             = "us-east4"
+      + self_link          = (known after apply)
+      + subnetwork         = (known after apply)
+      + terraform_labels   = (known after apply)
+      + users              = (known after apply)
+    }
+
+  # google_compute_firewall.allow-host will be created
+  + resource "google_compute_firewall" "allow-host" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + enable_logging     = (known after apply)
+      + id                 = (known after apply)
+      + name               = "sysbenchuseast4pg"
+      + network            = "sysbenchuseast4pg"
+      + priority           = 1000
+      + project            = "constant-land-412302"
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "47.236.68.13/32",
+        ]
+      + target_tags        = [
+          + "instance",
+        ]
+
+      + allow {
+          + ports    = [
+              + "22",
+              + "9022",
+            ]
+          + protocol = "tcp"
+        }
+    }
+
+  # google_compute_global_address.private_ip_address will be created
+  + resource "google_compute_global_address" "private_ip_address" {
+      + address            = (known after apply)
+      + address_type       = "INTERNAL"
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "sysbenchuseast4pg"
+      + network            = (known after apply)
+      + prefix_length      = 16
+      + project            = "constant-land-412302"
+      + purpose            = "VPC_PEERING"
+      + self_link          = (known after apply)
+    }
+
+  # google_compute_instance.instance will be created
+  + resource "google_compute_instance" "instance" {
+      + can_ip_forward       = false
+      + cpu_platform         = (known after apply)
+      + current_status       = (known after apply)
+      + deletion_protection  = false
+      + effective_labels     = (known after apply)
+      + guest_accelerator    = (known after apply)
+      + id                   = (known after apply)
+      + instance_id          = (known after apply)
+      + label_fingerprint    = (known after apply)
+      + machine_type         = "custom-4-4096"
+      + metadata             = {
+          + "ssh-keys" = <<-EOT
+                sysbench:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/AntdXIpUA5coR7wgUjFqzPNKvN3Zkh0bSb+2MKLkMRfLStiycRekuTYYf32r0SJyJ/2DAz7WujG+CBprHwR2XkClXihOvywYrsgoEFph8e4wVMhi5PTCRIEBybcFF3V/G8dpN7axDKQgy3v26sehNuQ/kFvsK9dc+9X9vJs7wKx6As2wJ7a+LSP+dJy/ABdMR3cpHjA0b0PdGNcN1SNwNtcbDAwE+AvRHPAfGua2V2P6HNF2PxvpYnmGLSbzUU3kMPF3yEyWK9ZEwaCCvTap3UTDWqVah3L5R4G32CxgBDe8Tn8kZLtT12we3XDgLnITTfT9usZKyERZYF0Aezjp root@53d198e6e3b4
+            EOT
+        }
+      + metadata_fingerprint = (known after apply)
+      + min_cpu_platform     = (known after apply)
+      + name                 = "sysbenchuseast4pg"
+      + project              = "constant-land-412302"
+      + self_link            = (known after apply)
+      + tags                 = [
+          + "instance",
+        ]
+      + tags_fingerprint     = (known after apply)
+      + terraform_labels     = (known after apply)
+      + zone                 = "us-east4-b"
+
+      + boot_disk {
+          + auto_delete                = true
+          + device_name                = (known after apply)
+          + disk_encryption_key_sha256 = (known after apply)
+          + kms_key_self_link          = (known after apply)
+          + mode                       = "READ_WRITE"
+          + source                     = (known after apply)
+
+          + initialize_params {
+              + image                  = "centos-7"
+              + labels                 = (known after apply)
+              + provisioned_iops       = (known after apply)
+              + provisioned_throughput = (known after apply)
+              + size                   = 20
+              + type                   = (known after apply)
+            }
+        }
+
+      + network_interface {
+          + internal_ipv6_prefix_length = (known after apply)
+          + ipv6_access_type            = (known after apply)
+          + ipv6_address                = (known after apply)
+          + name                        = (known after apply)
+          + network                     = "sysbenchuseast4pg"
+          + network_ip                  = (known after apply)
+          + stack_type                  = (known after apply)
+          + subnetwork                  = "sysbenchuseast4pg"
+          + subnetwork_project          = (known after apply)
+
+          + access_config {
+              + nat_ip       = (known after apply)
+              + network_tier = "STANDARD"
+            }
+        }
+    }
+
+  # google_compute_network.vpc will be created
+  + resource "google_compute_network" "vpc" {
+      + auto_create_subnetworks                   = false
+      + delete_default_routes_on_create           = false
+      + gateway_ipv4                              = (known after apply)
+      + id                                        = (known after apply)
+      + internal_ipv6_range                       = (known after apply)
+      + mtu                                       = (known after apply)
+      + name                                      = "sysbenchuseast4pg"
+      + network_firewall_policy_enforcement_order = "AFTER_CLASSIC_FIREWALL"
+      + numeric_id                                = (known after apply)
+      + project                                   = "constant-land-412302"
+      + routing_mode                              = (known after apply)
+      + self_link                                 = (known after apply)
+    }
+
+  # google_compute_network_peering_routes_config.peering_routes will be created
+  + resource "google_compute_network_peering_routes_config" "peering_routes" {
+      + export_custom_routes = true
+      + id                   = (known after apply)
+      + import_custom_routes = true
+      + network              = "sysbenchuseast4pg"
+      + peering              = (known after apply)
+      + project              = "constant-land-412302"
+    }
+
+  # google_compute_subnetwork.subnet will be created
+  + resource "google_compute_subnetwork" "subnet" {
+      + creation_timestamp         = (known after apply)
+      + external_ipv6_prefix       = (known after apply)
+      + fingerprint                = (known after apply)
+      + gateway_address            = (known after apply)
+      + id                         = (known after apply)
+      + internal_ipv6_prefix       = (known after apply)
+      + ip_cidr_range              = "192.168.0.0/24"
+      + ipv6_cidr_range            = (known after apply)
+      + name                       = "sysbenchuseast4pg"
+      + network                    = "sysbenchuseast4pg"
+      + private_ip_google_access   = (known after apply)
+      + private_ipv6_google_access = (known after apply)
+      + project                    = "constant-land-412302"
+      + purpose                    = (known after apply)
+      + region                     = (known after apply)
+      + secondary_ip_range         = (known after apply)
+      + self_link                  = (known after apply)
+      + stack_type                 = (known after apply)
+    }
+
+  # google_service_networking_connection.default will be created
+  + resource "google_service_networking_connection" "default" {
+      + id                      = (known after apply)
+      + network                 = (known after apply)
+      + peering                 = (known after apply)
+      + reserved_peering_ranges = [
+          + "sysbenchuseast4pg",
+        ]
+      + service                 = "servicenetworking.googleapis.com"
+    }
+
+  # google_sql_database_instance.database_instance will be created
+  + resource "google_sql_database_instance" "database_instance" {
+      + available_maintenance_versions = (known after apply)
+      + connection_name                = (known after apply)
+      + database_version               = "POSTGRES_15"
+      + deletion_protection            = false
+      + dns_name                       = (known after apply)
+      + encryption_key_name            = (known after apply)
+      + first_ip_address               = (known after apply)
+      + id                             = (known after apply)
+      + instance_type                  = (known after apply)
+      + ip_address                     = (known after apply)
+      + maintenance_version            = (known after apply)
+      + master_instance_name           = (known after apply)
+      + name                           = "sysbenchuseast4pg"
+      + private_ip_address             = (known after apply)
+      + project                        = "constant-land-412302"
+      + psc_service_attachment_link    = (known after apply)
+      + public_ip_address              = (known after apply)
+      + region                         = "us-east4"
+      + self_link                      = (known after apply)
+      + server_ca_cert                 = (sensitive value)
+      + service_account_email_address  = (known after apply)
+
+      + settings {
+          + activation_policy     = "ALWAYS"
+          + availability_type     = "REGIONAL"
+          + connector_enforcement = (known after apply)
+          + disk_autoresize       = true
+          + disk_autoresize_limit = 0
+          + disk_size             = 100
+          + disk_type             = "PD_SSD"
+          + edition               = "ENTERPRISE"
+          + pricing_plan          = "PER_USE"
+          + tier                  = "db-custom-4-16384"
+          + user_labels           = (known after apply)
+          + version               = (known after apply)
+
+          + backup_configuration {
+              + enabled                        = true
+              + point_in_time_recovery_enabled = true
+              + start_time                     = (known after apply)
+              + transaction_log_retention_days = (known after apply)
+            }
+
+          + ip_configuration {
+              + ipv4_enabled    = false
+              + private_network = (known after apply)
+              + ssl_mode        = (known after apply)
+            }
+
+          + location_preference {
+              + secondary_zone = "us-east4-c"
+              + zone           = "us-east4-b"
+            }
+        }
+    }
+
+  # google_sql_user.user will be created
+  + resource "google_sql_user" "user" {
+      + host                    = (known after apply)
+      + id                      = (known after apply)
+      + instance                = "sysbenchuseast4pg"
+      + name                    = "sbtest"
+      + password                = (sensitive value)
+      + project                 = "constant-land-412302"
+      + sql_server_user_details = (known after apply)
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + container = false
+  + db_port   = 5432
+  + db_pwd    = "DBPassword123"
+  + db_user   = "sbtest"
+  + host      = (known after apply)
+  + url       = (known after apply)
+  + user      = "sysbench"
+google_compute_network.vpc: Creating...
+google_compute_address.static_ip: Creating...
+google_compute_address.static_ip: Creation complete after 6s [id=projects/constant-land-412302/regions/us-east4/addresses/sysbenchuseast4pg]
+google_compute_network.vpc: Still creating... [10s elapsed]
+google_compute_network.vpc: Still creating... [20s elapsed]
+google_compute_network.vpc: Creation complete after 25s [id=projects/constant-land-412302/global/networks/sysbenchuseast4pg]
+google_compute_global_address.private_ip_address: Creating...
+google_compute_subnetwork.subnet: Creating...
+google_compute_firewall.allow-host: Creating...
+google_compute_subnetwork.subnet: Still creating... [10s elapsed]
+google_compute_firewall.allow-host: Still creating... [10s elapsed]
+google_compute_global_address.private_ip_address: Still creating... [10s elapsed]
+google_compute_global_address.private_ip_address: Creation complete after 13s [id=projects/constant-land-412302/global/addresses/sysbenchuseast4pg]
+google_service_networking_connection.default: Creating...
+google_compute_firewall.allow-host: Creation complete after 13s [id=projects/constant-land-412302/global/firewalls/sysbenchuseast4pg]
+google_compute_subnetwork.subnet: Creation complete after 16s [id=projects/constant-land-412302/regions/us-east4/subnetworks/sysbenchuseast4pg]
+google_service_networking_connection.default: Still creating... [10s elapsed]
+google_service_networking_connection.default: Still creating... [20s elapsed]
+google_service_networking_connection.default: Still creating... [30s elapsed]
+google_service_networking_connection.default: Still creating... [40s elapsed]
+google_service_networking_connection.default: Still creating... [50s elapsed]
+google_service_networking_connection.default: Still creating... [1m0s elapsed]
+google_service_networking_connection.default: Still creating... [1m10s elapsed]
+google_service_networking_connection.default: Still creating... [1m20s elapsed]
+google_service_networking_connection.default: Still creating... [1m30s elapsed]
+google_service_networking_connection.default: Still creating... [1m40s elapsed]
+google_service_networking_connection.default: Still creating... [1m50s elapsed]
+google_service_networking_connection.default: Still creating... [2m0s elapsed]
+google_service_networking_connection.default: Still creating... [2m10s elapsed]
+google_service_networking_connection.default: Still creating... [2m20s elapsed]
+google_service_networking_connection.default: Creation complete after 2m26s [id=https%3A%2F%2Fwww.googleapis.com%2Fcompute%2Fv1%2Fprojects%2Fconstant-land-412302%2Fglobal%2Fnetworks%2Fsysbenchuseast4pg:servicenetworking.googleapis.com]
+google_compute_network_peering_routes_config.peering_routes: Creating...
+google_sql_database_instance.database_instance: Creating...
+google_compute_network_peering_routes_config.peering_routes: Still creating... [10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [10s elapsed]
+google_compute_network_peering_routes_config.peering_routes: Creation complete after 14s [id=projects/constant-land-412302/global/networks/sysbenchuseast4pg/networkPeerings/servicenetworking-googleapis-com]
+google_sql_database_instance.database_instance: Still creating... [20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [40s elapsed]
+google_sql_database_instance.database_instance: Still creating... [50s elapsed]
+google_sql_database_instance.database_instance: Still creating... [1m0s elapsed]
+google_sql_database_instance.database_instance: Still creating... [1m10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [1m20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [1m30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [1m40s elapsed]
+google_sql_database_instance.database_instance: Still creating... [1m50s elapsed]
+google_sql_database_instance.database_instance: Still creating... [2m0s elapsed]
+google_sql_database_instance.database_instance: Still creating... [2m10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [2m20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [2m30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [2m40s elapsed]
+google_sql_database_instance.database_instance: Still creating... [2m50s elapsed]
+google_sql_database_instance.database_instance: Still creating... [3m0s elapsed]
+google_sql_database_instance.database_instance: Still creating... [3m10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [3m20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [3m30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [3m40s elapsed]
+google_sql_database_instance.database_instance: Still creating... [3m50s elapsed]
+google_sql_database_instance.database_instance: Still creating... [4m0s elapsed]
+google_sql_database_instance.database_instance: Still creating... [4m10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [4m20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [4m30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [4m40s elapsed]
+google_sql_database_instance.database_instance: Still creating... [4m50s elapsed]
+google_sql_database_instance.database_instance: Still creating... [5m0s elapsed]
+google_sql_database_instance.database_instance: Still creating... [5m10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [5m20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [5m30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [5m40s elapsed]
+google_sql_database_instance.database_instance: Still creating... [5m50s elapsed]
+google_sql_database_instance.database_instance: Still creating... [6m0s elapsed]
+google_sql_database_instance.database_instance: Still creating... [6m10s elapsed]
+google_sql_database_instance.database_instance: Still creating... [6m20s elapsed]
+google_sql_database_instance.database_instance: Still creating... [6m30s elapsed]
+google_sql_database_instance.database_instance: Still creating... [6m40s elapsed]
+google_sql_database_instance.database_instance: Creation complete after 6m49s [id=sysbenchuseast4pg]
+google_sql_user.user: Creating...
+google_sql_user.user: Creation complete after 3s [id=sbtest//sysbenchuseast4pg]
+google_compute_instance.instance: Creating...
+google_compute_instance.instance: Still creating... [10s elapsed]
+google_compute_instance.instance: Still creating... [20s elapsed]
+google_compute_instance.instance: Creation complete after 24s [id=projects/constant-land-412302/zones/us-east4-b/instances/sysbenchuseast4pg]
+
+Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+container = false
+db_port = 5432
+db_pwd = "DBPassword123"
+db_user = "sbtest"
+host = "35.212.49.170"
+url = "10.72.0.2"
+user = "sysbench"
+wait os start...
+sudo yum install -y docker ; sudo systemctl restart docker ; sudo docker stop sysbench ; sudo docker rm sysbench ; sudo docker run -id --name=sysbench -p 9022:22 ninedata/sysbench:latest /bin/bash -c '/usr/sbin/sshd && sleep infinity'
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:d6UrJ+eSCPeyeKeXmV9JZnl+QmcHTHR5xw2DlyH1Xco.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending ED25519 key in /root/.ssh/known_hosts:69
+  remove with:
+  ssh-keygen -f "/root/.ssh/known_hosts" -R "35.212.49.170"
+Password authentication is disabled to avoid man-in-the-middle attacks.
+Keyboard-interactive authentication is disabled to avoid man-in-the-middle attacks.
+UpdateHostkeys is disabled because the host key is not trusted.
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: mirror.ash.fastserv.com
+ * epel: forksystems.mm.fcix.net
+ * extras: forksystems.mm.fcix.net
+ * updates: mirror.rackspace.com
+Resolving Dependencies
+--> Running transaction check
+---> Package docker.x86_64 2:1.13.1-210.git7d71120.el7.centos will be installed
+--> Processing Dependency: docker-common = 2:1.13.1-210.git7d71120.el7.centos for package: 2:docker-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: docker-client = 2:1.13.1-210.git7d71120.el7.centos for package: 2:docker-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: subscription-manager-rhsm-certificates for package: 2:docker-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Running transaction check
+---> Package docker-client.x86_64 2:1.13.1-210.git7d71120.el7.centos will be installed
+---> Package docker-common.x86_64 2:1.13.1-210.git7d71120.el7.centos will be installed
+--> Processing Dependency: skopeo-containers >= 1:0.1.26-2 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: oci-umount >= 2:2.3.3-3 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: oci-systemd-hook >= 1:0.1.4-9 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: oci-register-machine >= 1:0-5.13 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: lvm2 >= 2.02.112 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: container-storage-setup >= 0.9.0-1 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: container-selinux >= 2:2.51-1 for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+--> Processing Dependency: atomic-registries for package: 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64
+---> Package subscription-manager-rhsm-certificates.x86_64 0:1.24.54-1.el7.centos will be installed
+--> Running transaction check
+---> Package atomic-registries.x86_64 1:1.22.1-33.gitb507039.el7_8 will be installed
+--> Processing Dependency: python-yaml for package: 1:atomic-registries-1.22.1-33.gitb507039.el7_8.x86_64
+--> Processing Dependency: python-setuptools for package: 1:atomic-registries-1.22.1-33.gitb507039.el7_8.x86_64
+--> Processing Dependency: python-pytoml for package: 1:atomic-registries-1.22.1-33.gitb507039.el7_8.x86_64
+---> Package container-selinux.noarch 2:2.119.2-1.911c772.el7_8 will be installed
+--> Processing Dependency: policycoreutils-python for package: 2:container-selinux-2.119.2-1.911c772.el7_8.noarch
+---> Package container-storage-setup.noarch 0:0.11.0-2.git5eaf76c.el7 will be installed
+---> Package containers-common.x86_64 1:0.1.40-11.el7_8 will be installed
+--> Processing Dependency: subscription-manager for package: 1:containers-common-0.1.40-11.el7_8.x86_64
+--> Processing Dependency: slirp4netns for package: 1:containers-common-0.1.40-11.el7_8.x86_64
+--> Processing Dependency: fuse-overlayfs for package: 1:containers-common-0.1.40-11.el7_8.x86_64
+---> Package lvm2.x86_64 7:2.02.187-6.el7_9.5 will be installed
+--> Processing Dependency: lvm2-libs = 7:2.02.187-6.el7_9.5 for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: device-mapper-persistent-data >= 0.7.0-0.1.rc6 for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: liblvm2app.so.2.2(Base)(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libdevmapper-event.so.1.02(Base)(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: liblvm2app.so.2.2()(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libdevmapper-event.so.1.02()(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libaio.so.1()(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+---> Package oci-register-machine.x86_64 1:0-6.git2b44233.el7 will be installed
+---> Package oci-systemd-hook.x86_64 1:0.2.0-1.git05e6923.el7_6 will be installed
+--> Processing Dependency: libyajl.so.2()(64bit) for package: 1:oci-systemd-hook-0.2.0-1.git05e6923.el7_6.x86_64
+---> Package oci-umount.x86_64 2:2.5-3.el7 will be installed
+--> Running transaction check
+---> Package PyYAML.x86_64 0:3.10-11.el7 will be installed
+--> Processing Dependency: libyaml-0.so.2()(64bit) for package: PyYAML-3.10-11.el7.x86_64
+---> Package device-mapper-event-libs.x86_64 7:1.02.170-6.el7_9.5 will be installed
+---> Package device-mapper-persistent-data.x86_64 0:0.8.5-3.el7_9.2 will be installed
+---> Package fuse-overlayfs.x86_64 0:0.7.2-6.el7_8 will be installed
+--> Processing Dependency: libfuse3.so.3(FUSE_3.2)(64bit) for package: fuse-overlayfs-0.7.2-6.el7_8.x86_64
+--> Processing Dependency: libfuse3.so.3(FUSE_3.0)(64bit) for package: fuse-overlayfs-0.7.2-6.el7_8.x86_64
+--> Processing Dependency: libfuse3.so.3()(64bit) for package: fuse-overlayfs-0.7.2-6.el7_8.x86_64
+---> Package libaio.x86_64 0:0.3.109-13.el7 will be installed
+---> Package lvm2-libs.x86_64 7:2.02.187-6.el7_9.5 will be installed
+--> Processing Dependency: device-mapper-event = 7:1.02.170-6.el7_9.5 for package: 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64
+---> Package policycoreutils-python.x86_64 0:2.5-34.el7 will be installed
+--> Processing Dependency: setools-libs >= 3.3.8-4 for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libsemanage-python >= 2.5-14 for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: audit-libs-python >= 2.1.3-4 for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: python-IPy for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libqpol.so.1(VERS_1.4)(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libqpol.so.1(VERS_1.2)(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libcgroup for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libapol.so.4(VERS_4.0)(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: checkpolicy for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libqpol.so.1()(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libapol.so.4()(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+---> Package python-pytoml.noarch 0:0.1.14-1.git7dea353.el7 will be installed
+---> Package python-setuptools.noarch 0:0.9.8-7.el7 will be installed
+--> Processing Dependency: python-backports-ssl_match_hostname for package: python-setuptools-0.9.8-7.el7.noarch
+---> Package slirp4netns.x86_64 0:0.4.3-4.el7_8 will be installed
+---> Package subscription-manager.x86_64 0:1.24.54-1.el7.centos will be installed
+--> Processing Dependency: subscription-manager-rhsm = 1.24.54 for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-dmidecode >= 3.12.2-2 for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: usermode for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-syspurpose for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-six for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-requests for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-inotify for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-ethtool for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+--> Processing Dependency: python-dateutil for package: subscription-manager-1.24.54-1.el7.centos.x86_64
+---> Package yajl.x86_64 0:2.0.4-4.el7 will be installed
+--> Running transaction check
+---> Package audit-libs-python.x86_64 0:2.8.5-4.el7 will be installed
+---> Package checkpolicy.x86_64 0:2.5-8.el7 will be installed
+---> Package device-mapper-event.x86_64 7:1.02.170-6.el7_9.5 will be installed
+---> Package fuse3-libs.x86_64 0:3.6.1-4.el7 will be installed
+---> Package libcgroup.x86_64 0:0.41-21.el7 will be installed
+---> Package libsemanage-python.x86_64 0:2.5-14.el7 will be installed
+---> Package libyaml.x86_64 0:0.1.4-11.el7_0 will be installed
+---> Package python-IPy.noarch 0:0.75-6.el7 will be installed
+---> Package python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7 will be installed
+--> Processing Dependency: python-ipaddress for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+--> Processing Dependency: python-backports for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+---> Package python-dateutil.noarch 0:1.5-7.el7 will be installed
+---> Package python-dmidecode.x86_64 0:3.12.2-4.el7 will be installed
+--> Processing Dependency: libxml2-python for package: python-dmidecode-3.12.2-4.el7.x86_64
+--> Processing Dependency: libxml2mod.so()(64bit) for package: python-dmidecode-3.12.2-4.el7.x86_64
+---> Package python-ethtool.x86_64 0:0.8-8.el7 will be installed
+--> Processing Dependency: libnl.so.1()(64bit) for package: python-ethtool-0.8-8.el7.x86_64
+---> Package python-inotify.noarch 0:0.9.4-4.el7 will be installed
+---> Package python-requests.noarch 0:2.6.0-10.el7 will be installed
+--> Processing Dependency: python-urllib3 >= 1.10.2-1 for package: python-requests-2.6.0-10.el7.noarch
+--> Processing Dependency: python-chardet >= 2.2.1-1 for package: python-requests-2.6.0-10.el7.noarch
+---> Package python-six.noarch 0:1.9.0-2.el7 will be installed
+---> Package python-syspurpose.x86_64 0:1.24.54-1.el7.centos will be installed
+---> Package setools-libs.x86_64 0:3.3.8-4.el7 will be installed
+---> Package subscription-manager-rhsm.x86_64 0:1.24.54-1.el7.centos will be installed
+---> Package usermode.x86_64 0:1.111-6.el7 will be installed
+--> Running transaction check
+---> Package libnl.x86_64 0:1.1.4-3.el7 will be installed
+---> Package libxml2-python.x86_64 0:2.9.1-6.el7_9.6 will be installed
+---> Package python-backports.x86_64 0:1.0-8.el7 will be installed
+---> Package python-chardet.noarch 0:2.2.1-3.el7 will be installed
+---> Package python-ipaddress.noarch 0:1.0.16-2.el7 will be installed
+---> Package python-urllib3.noarch 0:1.10.2-7.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                Arch   Version                            Repository
+                                                                           Size
+================================================================================
+Installing:
+ docker                 x86_64 2:1.13.1-210.git7d71120.el7.centos extras   17 M
+Installing for dependencies:
+ PyYAML                 x86_64 3.10-11.el7                        base    153 k
+ atomic-registries      x86_64 1:1.22.1-33.gitb507039.el7_8       extras   36 k
+ audit-libs-python      x86_64 2.8.5-4.el7                        base     76 k
+ checkpolicy            x86_64 2.5-8.el7                          base    295 k
+ container-selinux      noarch 2:2.119.2-1.911c772.el7_8          extras   40 k
+ container-storage-setup
+                        noarch 0.11.0-2.git5eaf76c.el7            extras   35 k
+ containers-common      x86_64 1:0.1.40-11.el7_8                  extras   43 k
+ device-mapper-event    x86_64 7:1.02.170-6.el7_9.5               updates 192 k
+ device-mapper-event-libs
+                        x86_64 7:1.02.170-6.el7_9.5               updates 192 k
+ device-mapper-persistent-data
+                        x86_64 0.8.5-3.el7_9.2                    updates 423 k
+ docker-client          x86_64 2:1.13.1-210.git7d71120.el7.centos extras  3.9 M
+ docker-common          x86_64 2:1.13.1-210.git7d71120.el7.centos extras  101 k
+ fuse-overlayfs         x86_64 0.7.2-6.el7_8                      extras   54 k
+ fuse3-libs             x86_64 3.6.1-4.el7                        extras   82 k
+ libaio                 x86_64 0.3.109-13.el7                     base     24 k
+ libcgroup              x86_64 0.41-21.el7                        base     66 k
+ libnl                  x86_64 1.1.4-3.el7                        base    128 k
+ libsemanage-python     x86_64 2.5-14.el7                         base    113 k
+ libxml2-python         x86_64 2.9.1-6.el7_9.6                    updates 247 k
+ libyaml                x86_64 0.1.4-11.el7_0                     base     55 k
+ lvm2                   x86_64 7:2.02.187-6.el7_9.5               updates 1.3 M
+ lvm2-libs              x86_64 7:2.02.187-6.el7_9.5               updates 1.1 M
+ oci-register-machine   x86_64 1:0-6.git2b44233.el7               extras  1.1 M
+ oci-systemd-hook       x86_64 1:0.2.0-1.git05e6923.el7_6         extras   34 k
+ oci-umount             x86_64 2:2.5-3.el7                        extras   33 k
+ policycoreutils-python x86_64 2.5-34.el7                         base    457 k
+ python-IPy             noarch 0.75-6.el7                         base     32 k
+ python-backports       x86_64 1.0-8.el7                          base    5.8 k
+ python-backports-ssl_match_hostname
+                        noarch 3.5.0.1-1.el7                      base     13 k
+ python-chardet         noarch 2.2.1-3.el7                        base    227 k
+ python-dateutil        noarch 1.5-7.el7                          base     85 k
+ python-dmidecode       x86_64 3.12.2-4.el7                       base     83 k
+ python-ethtool         x86_64 0.8-8.el7                          base     34 k
+ python-inotify         noarch 0.9.4-4.el7                        base     49 k
+ python-ipaddress       noarch 1.0.16-2.el7                       base     34 k
+ python-pytoml          noarch 0.1.14-1.git7dea353.el7            extras   18 k
+ python-requests        noarch 2.6.0-10.el7                       base     95 k
+ python-setuptools      noarch 0.9.8-7.el7                        base    397 k
+ python-six             noarch 1.9.0-2.el7                        base     29 k
+ python-syspurpose      x86_64 1.24.54-1.el7.centos               updates 277 k
+ python-urllib3         noarch 1.10.2-7.el7                       base    103 k
+ setools-libs           x86_64 3.3.8-4.el7                        base    620 k
+ slirp4netns            x86_64 0.4.3-4.el7_8                      extras   81 k
+ subscription-manager   x86_64 1.24.54-1.el7.centos               updates 1.1 M
+ subscription-manager-rhsm
+                        x86_64 1.24.54-1.el7.centos               updates 336 k
+ subscription-manager-rhsm-certificates
+                        x86_64 1.24.54-1.el7.centos               updates 240 k
+ usermode               x86_64 1.111-6.el7                        base    193 k
+ yajl                   x86_64 2.0.4-4.el7                        base     39 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+48 Dependent packages)
+
+Total download size: 31 M
+Installed size: 107 M
+Downloading packages:
+http://mirror.ette.biz/centos/7.9.2009/os/x86_64/Packages/python-requests-2.6.0-10.el7.noarch.rpm: [Errno 14] HTTP Error 429 - The requested URL returned error: 429 Too Many Requests
+Trying other mirror.
+http://mirror.ette.biz/centos/7.9.2009/os/x86_64/Packages/python-setuptools-0.9.8-7.el7.noarch.rpm: [Errno 14] HTTP Error 429 - The requested URL returned error: 429 Too Many Requests
+Trying other mirror.
+http://mirror.ette.biz/centos/7.9.2009/os/x86_64/Packages/python-six-1.9.0-2.el7.noarch.rpm: [Errno 14] HTTP Error 429 - The requested URL returned error: 429 Too Many Requests
+Trying other mirror.
+http://mirror.ette.biz/centos/7.9.2009/os/x86_64/Packages/python-urllib3-1.10.2-7.el7.noarch.rpm: [Errno 14] HTTP Error 429 - The requested URL returned error: 429 Too Many Requests
+Trying other mirror.
+http://mirror.ette.biz/centos/7.9.2009/os/x86_64/Packages/setools-libs-3.3.8-4.el7.x86_64.rpm: [Errno 14] HTTP Error 429 - The requested URL returned error: 429 Too Many Requests
+Trying other mirror.
+http://mirror.ette.biz/centos/7.9.2009/os/x86_64/Packages/yajl-2.0.4-4.el7.x86_64.rpm: [Errno 14] HTTP Error 429 - The requested URL returned error: 429 Too Many Requests
+Trying other mirror.
+--------------------------------------------------------------------------------
+Total                                               21 MB/s |  31 MB  00:01
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : libaio-0.3.109-13.el7.x86_64                                1/49
+  Installing : 7:device-mapper-event-libs-1.02.170-6.el7_9.5.x86_64        2/49
+  Installing : python-six-1.9.0-2.el7.noarch                               3/49
+  Installing : subscription-manager-rhsm-certificates-1.24.54-1.el7.cen    4/49
+  Installing : python-ipaddress-1.0.16-2.el7.noarch                        5/49
+  Installing : yajl-2.0.4-4.el7.x86_64                                     6/49
+  Installing : python-dateutil-1.5-7.el7.noarch                            7/49
+  Installing : subscription-manager-rhsm-1.24.54-1.el7.centos.x86_64       8/49
+  Installing : 2:oci-umount-2.5-3.el7.x86_64                               9/49
+  Installing : 1:oci-systemd-hook-0.2.0-1.git05e6923.el7_6.x86_64         10/49
+  Installing : 7:device-mapper-event-1.02.170-6.el7_9.5.x86_64            11/49
+  Installing : 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64                      12/49
+  Installing : device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64       13/49
+  Installing : 7:lvm2-2.02.187-6.el7_9.5.x86_64                           14/49
+  Installing : container-storage-setup-0.11.0-2.git5eaf76c.el7.noarch     15/49
+  Installing : libcgroup-0.41-21.el7.x86_64                               16/49
+  Installing : usermode-1.111-6.el7.x86_64                                17/49
+  Installing : libxml2-python-2.9.1-6.el7_9.6.x86_64                      18/49
+  Installing : python-dmidecode-3.12.2-4.el7.x86_64                       19/49
+  Installing : libnl-1.1.4-3.el7.x86_64                                   20/49
+  Installing : python-ethtool-0.8-8.el7.x86_64                            21/49
+  Installing : libyaml-0.1.4-11.el7_0.x86_64                              22/49
+  Installing : PyYAML-3.10-11.el7.x86_64                                  23/49
+  Installing : python-chardet-2.2.1-3.el7.noarch                          24/49
+  Installing : audit-libs-python-2.8.5-4.el7.x86_64                       25/49
+  Installing : python-backports-1.0-8.el7.x86_64                          26/49
+  Installing : python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch   27/49
+  Installing : python-setuptools-0.9.8-7.el7.noarch                       28/49
+  Installing : python-urllib3-1.10.2-7.el7.noarch                         29/49
+  Installing : python-requests-2.6.0-10.el7.noarch                        30/49
+  Installing : slirp4netns-0.4.3-4.el7_8.x86_64                           31/49
+  Installing : 1:oci-register-machine-0-6.git2b44233.el7.x86_64           32/49
+  Installing : libsemanage-python-2.5-14.el7.x86_64                       33/49
+  Installing : fuse3-libs-3.6.1-4.el7.x86_64                              34/49
+  Installing : fuse-overlayfs-0.7.2-6.el7_8.x86_64                        35/49
+  Installing : setools-libs-3.3.8-4.el7.x86_64                            36/49
+  Installing : python-pytoml-0.1.14-1.git7dea353.el7.noarch               37/49
+  Installing : 1:atomic-registries-1.22.1-33.gitb507039.el7_8.x86_64      38/49
+  Installing : python-IPy-0.75-6.el7.noarch                               39/49
+  Installing : checkpolicy-2.5-8.el7.x86_64                               40/49
+  Installing : policycoreutils-python-2.5-34.el7.x86_64                   41/49
+  Installing : 2:container-selinux-2.119.2-1.911c772.el7_8.noarch         42/49
+  Installing : python-syspurpose-1.24.54-1.el7.centos.x86_64              43/49
+  Installing : python-inotify-0.9.4-4.el7.noarch                          44/49
+  Installing : subscription-manager-1.24.54-1.el7.centos.x86_64           45/49
+  Installing : 1:containers-common-0.1.40-11.el7_8.x86_64                 46/49
+  Installing : 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64    47/49
+  Installing : 2:docker-client-1.13.1-210.git7d71120.el7.centos.x86_64    48/49
+  Installing : 2:docker-1.13.1-210.git7d71120.el7.centos.x86_64           49/49
+  Verifying  : 7:device-mapper-event-1.02.170-6.el7_9.5.x86_64             1/49
+  Verifying  : python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch    2/49
+  Verifying  : 1:atomic-registries-1.22.1-33.gitb507039.el7_8.x86_64       3/49
+  Verifying  : python-ethtool-0.8-8.el7.x86_64                             4/49
+  Verifying  : fuse-overlayfs-0.7.2-6.el7_8.x86_64                         5/49
+  Verifying  : 2:container-selinux-2.119.2-1.911c772.el7_8.noarch          6/49
+  Verifying  : container-storage-setup-0.11.0-2.git5eaf76c.el7.noarch      7/49
+  Verifying  : python-inotify-0.9.4-4.el7.noarch                           8/49
+  Verifying  : python-syspurpose-1.24.54-1.el7.centos.x86_64               9/49
+  Verifying  : 1:containers-common-0.1.40-11.el7_8.x86_64                 10/49
+  Verifying  : python-setuptools-0.9.8-7.el7.noarch                       11/49
+  Verifying  : python-urllib3-1.10.2-7.el7.noarch                         12/49
+  Verifying  : checkpolicy-2.5-8.el7.x86_64                               13/49
+  Verifying  : python-IPy-0.75-6.el7.noarch                               14/49
+  Verifying  : python-dateutil-1.5-7.el7.noarch                           15/49
+  Verifying  : 2:oci-umount-2.5-3.el7.x86_64                              16/49
+  Verifying  : policycoreutils-python-2.5-34.el7.x86_64                   17/49
+  Verifying  : python-pytoml-0.1.14-1.git7dea353.el7.noarch               18/49
+  Verifying  : python-six-1.9.0-2.el7.noarch                              19/49
+  Verifying  : 7:lvm2-2.02.187-6.el7_9.5.x86_64                           20/49
+  Verifying  : subscription-manager-1.24.54-1.el7.centos.x86_64           21/49
+  Verifying  : setools-libs-3.3.8-4.el7.x86_64                            22/49
+  Verifying  : 2:docker-client-1.13.1-210.git7d71120.el7.centos.x86_64    23/49
+  Verifying  : fuse3-libs-3.6.1-4.el7.x86_64                              24/49
+  Verifying  : 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64                      25/49
+  Verifying  : libsemanage-python-2.5-14.el7.x86_64                       26/49
+  Verifying  : 1:oci-systemd-hook-0.2.0-1.git05e6923.el7_6.x86_64         27/49
+  Verifying  : 1:oci-register-machine-0-6.git2b44233.el7.x86_64           28/49
+  Verifying  : slirp4netns-0.4.3-4.el7_8.x86_64                           29/49
+  Verifying  : python-backports-1.0-8.el7.x86_64                          30/49
+  Verifying  : yajl-2.0.4-4.el7.x86_64                                    31/49
+  Verifying  : audit-libs-python-2.8.5-4.el7.x86_64                       32/49
+  Verifying  : 7:device-mapper-event-libs-1.02.170-6.el7_9.5.x86_64       33/49
+  Verifying  : python-dmidecode-3.12.2-4.el7.x86_64                       34/49
+  Verifying  : python-chardet-2.2.1-3.el7.noarch                          35/49
+  Verifying  : libyaml-0.1.4-11.el7_0.x86_64                              36/49
+  Verifying  : libaio-0.3.109-13.el7.x86_64                               37/49
+  Verifying  : python-requests-2.6.0-10.el7.noarch                        38/49
+  Verifying  : libnl-1.1.4-3.el7.x86_64                                   39/49
+  Verifying  : 2:docker-common-1.13.1-210.git7d71120.el7.centos.x86_64    40/49
+  Verifying  : 2:docker-1.13.1-210.git7d71120.el7.centos.x86_64           41/49
+  Verifying  : libxml2-python-2.9.1-6.el7_9.6.x86_64                      42/49
+  Verifying  : python-ipaddress-1.0.16-2.el7.noarch                       43/49
+  Verifying  : device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64       44/49
+  Verifying  : subscription-manager-rhsm-1.24.54-1.el7.centos.x86_64      45/49
+  Verifying  : PyYAML-3.10-11.el7.x86_64                                  46/49
+  Verifying  : subscription-manager-rhsm-certificates-1.24.54-1.el7.cen   47/49
+  Verifying  : usermode-1.111-6.el7.x86_64                                48/49
+  Verifying  : libcgroup-0.41-21.el7.x86_64                               49/49
+
+Installed:
+  docker.x86_64 2:1.13.1-210.git7d71120.el7.centos
+
+Dependency Installed:
+  PyYAML.x86_64 0:3.10-11.el7
+  atomic-registries.x86_64 1:1.22.1-33.gitb507039.el7_8
+  audit-libs-python.x86_64 0:2.8.5-4.el7
+  checkpolicy.x86_64 0:2.5-8.el7
+  container-selinux.noarch 2:2.119.2-1.911c772.el7_8
+  container-storage-setup.noarch 0:0.11.0-2.git5eaf76c.el7
+  containers-common.x86_64 1:0.1.40-11.el7_8
+  device-mapper-event.x86_64 7:1.02.170-6.el7_9.5
+  device-mapper-event-libs.x86_64 7:1.02.170-6.el7_9.5
+  device-mapper-persistent-data.x86_64 0:0.8.5-3.el7_9.2
+  docker-client.x86_64 2:1.13.1-210.git7d71120.el7.centos
+  docker-common.x86_64 2:1.13.1-210.git7d71120.el7.centos
+  fuse-overlayfs.x86_64 0:0.7.2-6.el7_8
+  fuse3-libs.x86_64 0:3.6.1-4.el7
+  libaio.x86_64 0:0.3.109-13.el7
+  libcgroup.x86_64 0:0.41-21.el7
+  libnl.x86_64 0:1.1.4-3.el7
+  libsemanage-python.x86_64 0:2.5-14.el7
+  libxml2-python.x86_64 0:2.9.1-6.el7_9.6
+  libyaml.x86_64 0:0.1.4-11.el7_0
+  lvm2.x86_64 7:2.02.187-6.el7_9.5
+  lvm2-libs.x86_64 7:2.02.187-6.el7_9.5
+  oci-register-machine.x86_64 1:0-6.git2b44233.el7
+  oci-systemd-hook.x86_64 1:0.2.0-1.git05e6923.el7_6
+  oci-umount.x86_64 2:2.5-3.el7
+  policycoreutils-python.x86_64 0:2.5-34.el7
+  python-IPy.noarch 0:0.75-6.el7
+  python-backports.x86_64 0:1.0-8.el7
+  python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7
+  python-chardet.noarch 0:2.2.1-3.el7
+  python-dateutil.noarch 0:1.5-7.el7
+  python-dmidecode.x86_64 0:3.12.2-4.el7
+  python-ethtool.x86_64 0:0.8-8.el7
+  python-inotify.noarch 0:0.9.4-4.el7
+  python-ipaddress.noarch 0:1.0.16-2.el7
+  python-pytoml.noarch 0:0.1.14-1.git7dea353.el7
+  python-requests.noarch 0:2.6.0-10.el7
+  python-setuptools.noarch 0:0.9.8-7.el7
+  python-six.noarch 0:1.9.0-2.el7
+  python-syspurpose.x86_64 0:1.24.54-1.el7.centos
+  python-urllib3.noarch 0:1.10.2-7.el7
+  setools-libs.x86_64 0:3.3.8-4.el7
+  slirp4netns.x86_64 0:0.4.3-4.el7_8
+  subscription-manager.x86_64 0:1.24.54-1.el7.centos
+  subscription-manager-rhsm.x86_64 0:1.24.54-1.el7.centos
+  subscription-manager-rhsm-certificates.x86_64 0:1.24.54-1.el7.centos
+  usermode.x86_64 0:1.111-6.el7
+  yajl.x86_64 0:2.0.4-4.el7
+
+Complete!
+Error response from daemon: No such container: sysbench
+Error response from daemon: No such container: sysbench
+Unable to find image 'ninedata/sysbench:latest' locally
+Trying to pull repository docker.io/ninedata/sysbench ...
+latest: Pulling from docker.io/ninedata/sysbench
+2d473b07cdd5: Pulling fs layer
+9c911f76d3a2: Pulling fs layer
+bb0d555553fa: Pulling fs layer
+9c911f76d3a2: Download complete
+2d473b07cdd5: Download complete
+bb0d555553fa: Verifying Checksum
+bb0d555553fa: Download complete
+2d473b07cdd5: Pull complete
+9c911f76d3a2: Pull complete
+bb0d555553fa: Pull complete
+Digest: sha256:2430b8337e625e2c93cb203f569b578e4a7539e20d9042bfcba14516172f68d0
+Status: Downloaded newer image for docker.io/ninedata/sysbench:latest
+37f002fb378ead1381b0392d94b5e6025d597c642fc2fb74ef76fd8557321b22
+export PGPASSWORD=DBPassword123 && psql -h 10.72.0.2 -p 5432 -U sbtest -d postgres -c 'SELECT datname FROM pg_database' | grep -q sbtest || psql -h 10.72.0.2 -p 5432 -U sbtest -d postgres -c 'CREATE DATABASE sbtest'
+CREATE DATABASE
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --threads=20 --percentile=95 --report-interval=10 oltp_read_write prepare
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Initializing worker threads...
+
+Creating table 'sbtest3'...
+Creating table 'sbtest4'...
+Creating table 'sbtest1'...
+Creating table 'sbtest7'...
+Creating table 'sbtest9'...
+Creating table 'sbtest6'...
+Creating table 'sbtest8'...
+Creating table 'sbtest5'...
+Creating table 'sbtest10'...
+Creating table 'sbtest2'...
+Inserting 10000000 records into 'sbtest9'
+Inserting 10000000 records into 'sbtest3'
+Inserting 10000000 records into 'sbtest8'
+Inserting 10000000 records into 'sbtest7'
+Inserting 10000000 records into 'sbtest5'
+Inserting 10000000 records into 'sbtest1'
+Inserting 10000000 records into 'sbtest4'
+Inserting 10000000 records into 'sbtest2'
+Inserting 10000000 records into 'sbtest10'
+Inserting 10000000 records into 'sbtest6'
+Creating a secondary index on 'sbtest1'...
+Creating a secondary index on 'sbtest9'...
+Creating a secondary index on 'sbtest4'...
+Creating a secondary index on 'sbtest3'...
+Creating a secondary index on 'sbtest8'...
+Creating a secondary index on 'sbtest2'...
+Creating a secondary index on 'sbtest6'...
+Creating a secondary index on 'sbtest5'...
+Creating a secondary index on 'sbtest10'...
+Creating a secondary index on 'sbtest7'...
+****************************** 4 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=4  --percentile=95  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 4
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 4 tps: 221.05 qps: 4426.75 (r/w/o: 3099.64/884.61/442.51) lat (ms,95%): 28.67 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 4 tps: 269.10 qps: 5379.67 (r/w/o: 3765.15/1076.41/538.11) lat (ms,95%): 21.11 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 4 tps: 280.20 qps: 5606.62 (r/w/o: 3925.31/1120.80/560.50) lat (ms,95%): 21.89 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 4 tps: 298.00 qps: 5958.33 (r/w/o: 4170.62/1191.71/596.00) lat (ms,95%): 18.28 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 4 tps: 308.90 qps: 6180.48 (r/w/o: 4326.09/1236.60/617.80) lat (ms,95%): 17.32 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 4 tps: 321.10 qps: 6418.21 (r/w/o: 4492.84/1283.28/642.09) lat (ms,95%): 16.71 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 4 tps: 349.70 qps: 6994.54 (r/w/o: 4896.23/1398.81/699.50) lat (ms,95%): 15.83 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 4 tps: 321.30 qps: 6427.77 (r/w/o: 4499.58/1285.59/642.60) lat (ms,95%): 17.95 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 4 tps: 335.40 qps: 6706.90 (r/w/o: 4694.90/1341.20/670.80) lat (ms,95%): 16.71 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 4 tps: 346.10 qps: 6922.26 (r/w/o: 4845.24/1384.81/692.21) lat (ms,95%): 16.41 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 4 tps: 348.00 qps: 6959.10 (r/w/o: 4871.10/1392.00/696.00) lat (ms,95%): 16.41 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 4 tps: 358.10 qps: 7162.62 (r/w/o: 5014.41/1432.00/716.20) lat (ms,95%): 15.27 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 4 tps: 359.91 qps: 7201.53 (r/w/o: 5040.59/1441.13/719.81) lat (ms,95%): 15.00 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 4 tps: 364.00 qps: 7275.01 (r/w/o: 5092.54/1454.48/727.99) lat (ms,95%): 15.00 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 4 tps: 346.00 qps: 6923.36 (r/w/o: 4846.97/1384.39/692.00) lat (ms,95%): 16.41 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 4 tps: 344.30 qps: 6884.80 (r/w/o: 4819.10/1377.10/688.60) lat (ms,95%): 16.41 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 4 tps: 350.50 qps: 7011.82 (r/w/o: 4908.31/1402.50/701.00) lat (ms,95%): 15.83 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 4 tps: 365.10 qps: 7299.78 (r/w/o: 5109.78/1459.80/730.20) lat (ms,95%): 15.00 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 4 tps: 370.81 qps: 7417.14 (r/w/o: 5191.90/1483.63/741.61) lat (ms,95%): 14.46 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 4 tps: 377.69 qps: 7553.44 (r/w/o: 5287.59/1510.47/755.38) lat (ms,95%): 14.46 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 4 tps: 388.60 qps: 7772.55 (r/w/o: 5440.64/1554.71/777.21) lat (ms,95%): 13.95 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 4 tps: 351.50 qps: 7029.69 (r/w/o: 4920.87/1405.82/703.01) lat (ms,95%): 17.01 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 4 tps: 359.80 qps: 7197.07 (r/w/o: 5038.28/1439.19/719.60) lat (ms,95%): 15.83 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 4 tps: 377.90 qps: 7557.78 (r/w/o: 5289.99/1512.00/755.80) lat (ms,95%): 14.46 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 4 tps: 379.90 qps: 7598.32 (r/w/o: 5318.92/1519.60/759.80) lat (ms,95%): 14.21 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 4 tps: 388.30 qps: 7761.40 (r/w/o: 5432.43/1552.38/776.59) lat (ms,95%): 14.46 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 4 tps: 394.10 qps: 7885.05 (r/w/o: 5520.26/1576.59/788.19) lat (ms,95%): 13.46 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 4 tps: 338.51 qps: 6768.62 (r/w/o: 4737.79/1353.82/677.01) lat (ms,95%): 17.63 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 4 tps: 365.79 qps: 7317.96 (r/w/o: 5122.40/1463.97/731.59) lat (ms,95%): 16.12 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 4 tps: 358.40 qps: 7167.09 (r/w/o: 5016.66/1433.62/716.81) lat (ms,95%): 17.01 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 4 tps: 256.10 qps: 5123.95 (r/w/o: 3586.97/1024.79/512.20) lat (ms,95%): 22.69 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 4 tps: 340.20 qps: 6801.99 (r/w/o: 4761.70/1360.00/680.30) lat (ms,95%): 17.01 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 4 tps: 354.70 qps: 7094.41 (r/w/o: 4966.41/1418.50/709.50) lat (ms,95%): 15.55 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 4 tps: 373.91 qps: 7479.61 (r/w/o: 5235.08/1496.72/747.81) lat (ms,95%): 14.46 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 4 tps: 344.39 qps: 6887.58 (r/w/o: 4821.92/1376.88/688.79) lat (ms,95%): 17.32 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 4 tps: 361.60 qps: 7232.88 (r/w/o: 5062.75/1446.92/723.21) lat (ms,95%): 15.83 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            1731716
+        write:                           494776
+        other:                           247388
+        total:                           2473880
+    transactions:                        123694 (343.59 per sec.)
+    queries:                             2473880 (6871.75 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0055s
+    total number of events:              123694
+
+Latency (ms):
+         min:                                    5.64
+         avg:                                   11.64
+         max:                                  111.36
+         95th percentile:                       17.32
+         sum:                              1439710.39
+
+Threads fairness:
+    events (avg/stddev):           30923.5000/985.59
+    execution time (avg/stddev):   359.9276/0.00
+
+****************************** 8 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=8  --percentile=95  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 8
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 8 tps: 572.06 qps: 11449.18 (r/w/o: 8015.60/2288.66/1144.93) lat (ms,95%): 21.11 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 8 tps: 613.12 qps: 12264.74 (r/w/o: 8585.04/2453.47/1226.23) lat (ms,95%): 18.95 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 8 tps: 604.59 qps: 12090.11 (r/w/o: 8463.70/2417.34/1209.07) lat (ms,95%): 20.00 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 8 tps: 569.01 qps: 11379.21 (r/w/o: 7964.88/2276.42/1137.91) lat (ms,95%): 21.50 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 8 tps: 617.92 qps: 12361.52 (r/w/o: 8654.33/2471.16/1236.03) lat (ms,95%): 18.95 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 8 tps: 629.90 qps: 12598.69 (r/w/o: 8818.46/2520.42/1259.81) lat (ms,95%): 18.28 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 8 tps: 568.69 qps: 11374.26 (r/w/o: 7961.20/2275.67/1137.39) lat (ms,95%): 22.28 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 8 tps: 589.10 qps: 11779.60 (r/w/o: 8246.20/2355.20/1178.20) lat (ms,95%): 20.74 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 8 tps: 604.70 qps: 12091.63 (r/w/o: 8463.02/2419.21/1209.40) lat (ms,95%): 20.37 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 8 tps: 604.10 qps: 12083.28 (r/w/o: 8459.46/2415.62/1208.21) lat (ms,95%): 20.00 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 8 tps: 570.10 qps: 11400.81 (r/w/o: 7980.00/2280.60/1140.20) lat (ms,95%): 23.10 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 8 tps: 611.61 qps: 12237.61 (r/w/o: 8566.27/2448.12/1223.21) lat (ms,95%): 19.65 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 8 tps: 600.49 qps: 12008.40 (r/w/o: 8406.06/2401.36/1200.98) lat (ms,95%): 20.74 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 8 tps: 598.10 qps: 11953.49 (r/w/o: 8366.29/2391.10/1196.10) lat (ms,95%): 20.74 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 8 tps: 592.80 qps: 11863.29 (r/w/o: 8306.29/2371.10/1185.90) lat (ms,95%): 21.11 err/s: 0.10 reconn/s: 0.00
+[ 160s ] thds: 8 tps: 587.71 qps: 11758.54 (r/w/o: 8230.49/2352.63/1175.41) lat (ms,95%): 21.11 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 8 tps: 646.30 qps: 12923.23 (r/w/o: 9046.55/2584.09/1292.59) lat (ms,95%): 17.63 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 8 tps: 571.30 qps: 11424.96 (r/w/o: 7996.87/2285.49/1142.60) lat (ms,95%): 21.50 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 8 tps: 576.99 qps: 11535.13 (r/w/o: 8074.31/2306.85/1153.97) lat (ms,95%): 21.89 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 8 tps: 622.49 qps: 12455.68 (r/w/o: 8719.85/2490.86/1244.98) lat (ms,95%): 19.29 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 8 tps: 607.61 qps: 12152.83 (r/w/o: 8507.56/2430.05/1215.22) lat (ms,95%): 20.74 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 8 tps: 559.21 qps: 11184.20 (r/w/o: 7828.27/2237.52/1118.41) lat (ms,95%): 22.69 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 8 tps: 610.41 qps: 12205.88 (r/w/o: 8543.63/2441.34/1220.92) lat (ms,95%): 19.65 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 8 tps: 643.79 qps: 12874.50 (r/w/o: 9012.33/2574.68/1287.49) lat (ms,95%): 17.63 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 8 tps: 476.29 qps: 9530.25 (r/w/o: 6671.90/1905.77/952.59) lat (ms,95%): 33.72 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 8 tps: 602.59 qps: 12047.84 (r/w/o: 8432.61/2410.15/1205.07) lat (ms,95%): 20.37 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 8 tps: 631.31 qps: 12630.87 (r/w/o: 8842.22/2525.93/1262.72) lat (ms,95%): 18.28 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 8 tps: 606.02 qps: 12121.08 (r/w/o: 8484.07/2424.98/1212.04) lat (ms,95%): 20.37 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 8 tps: 591.58 qps: 11825.80 (r/w/o: 8278.52/2364.12/1183.16) lat (ms,95%): 21.11 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 8 tps: 623.10 qps: 12464.66 (r/w/o: 8725.34/2493.11/1246.21) lat (ms,95%): 19.29 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 8 tps: 631.39 qps: 12628.68 (r/w/o: 8839.64/2526.26/1262.78) lat (ms,95%): 19.29 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 8 tps: 577.60 qps: 11546.11 (r/w/o: 8081.30/2309.60/1155.20) lat (ms,95%): 22.28 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 8 tps: 600.90 qps: 12025.74 (r/w/o: 8419.13/2404.81/1201.80) lat (ms,95%): 20.37 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 8 tps: 603.02 qps: 12059.04 (r/w/o: 8441.74/2411.27/1206.03) lat (ms,95%): 20.74 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 8 tps: 603.19 qps: 12061.13 (r/w/o: 8442.21/2412.55/1206.37) lat (ms,95%): 20.74 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 8 tps: 579.60 qps: 11591.55 (r/w/o: 8114.74/2317.71/1159.11) lat (ms,95%): 21.50 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            3009958
+        write:                           859986
+        other:                           429994
+        total:                           4299938
+    transactions:                        214996 (597.18 per sec.)
+    queries:                             4299938 (11943.74 per sec.)
+    ignored errors:                      1      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0144s
+    total number of events:              214996
+
+Latency (ms):
+         min:                                    6.31
+         avg:                                   13.39
+         max:                                  137.03
+         95th percentile:                       20.74
+         sum:                              2879486.34
+
+Threads fairness:
+    events (avg/stddev):           26874.5000/598.98
+    execution time (avg/stddev):   359.9358/0.00
+
+****************************** 16 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=16  --percentile=95  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 16
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 16 tps: 765.10 qps: 15315.92 (r/w/o: 10723.81/3060.40/1531.70) lat (ms,95%): 33.72 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 16 tps: 791.83 qps: 15849.74 (r/w/o: 11094.08/3172.01/1583.65) lat (ms,95%): 33.12 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 16 tps: 788.44 qps: 15770.81 (r/w/o: 11039.20/3154.64/1576.97) lat (ms,95%): 33.12 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 16 tps: 790.06 qps: 15797.95 (r/w/o: 11059.60/3158.23/1580.11) lat (ms,95%): 34.33 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 16 tps: 757.42 qps: 15145.19 (r/w/o: 10602.47/3027.88/1514.84) lat (ms,95%): 34.33 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 16 tps: 794.79 qps: 15892.75 (r/w/o: 11125.33/3177.85/1589.58) lat (ms,95%): 31.37 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 16 tps: 725.50 qps: 14511.74 (r/w/o: 10156.83/2903.91/1451.00) lat (ms,95%): 36.89 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 16 tps: 687.01 qps: 13740.01 (r/w/o: 9618.05/2747.94/1374.02) lat (ms,95%): 38.25 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 16 tps: 589.00 qps: 11779.11 (r/w/o: 8245.34/2355.88/1177.89) lat (ms,95%): 37.56 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 16 tps: 489.30 qps: 9780.47 (r/w/o: 6845.65/1956.31/978.51) lat (ms,95%): 90.78 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 16 tps: 677.10 qps: 13548.43 (r/w/o: 9485.12/2709.01/1354.30) lat (ms,95%): 36.89 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 16 tps: 708.60 qps: 14170.17 (r/w/o: 9919.95/2832.91/1417.31) lat (ms,95%): 36.89 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 16 tps: 277.59 qps: 5556.45 (r/w/o: 3887.89/1113.37/555.18) lat (ms,95%): 112.67 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 16 tps: 771.80 qps: 15433.86 (r/w/o: 10803.24/3087.01/1543.61) lat (ms,95%): 32.53 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 16 tps: 798.51 qps: 15967.30 (r/w/o: 11177.21/3193.06/1597.03) lat (ms,95%): 31.94 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 16 tps: 740.00 qps: 14802.69 (r/w/o: 10363.49/2959.20/1480.00) lat (ms,95%): 35.59 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 16 tps: 775.27 qps: 15504.32 (r/w/o: 10852.70/3101.08/1550.54) lat (ms,95%): 32.53 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 16 tps: 817.31 qps: 16350.69 (r/w/o: 11445.41/3270.66/1634.63) lat (ms,95%): 30.81 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 16 tps: 736.10 qps: 14720.35 (r/w/o: 10304.34/2943.61/1472.41) lat (ms,95%): 36.24 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 16 tps: 799.58 qps: 15990.48 (r/w/o: 11193.78/3197.54/1599.17) lat (ms,95%): 31.94 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 16 tps: 765.02 qps: 15301.24 (r/w/o: 10709.71/3061.49/1530.04) lat (ms,95%): 33.12 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 16 tps: 750.61 qps: 15008.36 (r/w/o: 10506.21/3001.03/1501.12) lat (ms,95%): 35.59 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 16 tps: 793.99 qps: 15886.86 (r/w/o: 11121.00/3177.77/1588.09) lat (ms,95%): 31.37 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 16 tps: 737.88 qps: 14749.73 (r/w/o: 10324.47/2949.51/1475.75) lat (ms,95%): 34.95 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 16 tps: 762.11 qps: 15236.95 (r/w/o: 10664.87/3047.95/1524.12) lat (ms,95%): 34.33 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 16 tps: 769.90 qps: 15408.19 (r/w/o: 10786.56/3081.72/1539.91) lat (ms,95%): 33.72 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 16 tps: 763.92 qps: 15276.29 (r/w/o: 10692.47/3056.08/1527.74) lat (ms,95%): 32.53 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 16 tps: 772.99 qps: 15464.41 (r/w/o: 10826.60/3091.74/1546.07) lat (ms,95%): 33.72 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 16 tps: 729.48 qps: 14581.30 (r/w/o: 10206.29/2916.24/1458.77) lat (ms,95%): 35.59 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 16 tps: 771.41 qps: 15435.32 (r/w/o: 10805.09/3087.12/1543.11) lat (ms,95%): 32.53 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 16 tps: 756.20 qps: 15116.15 (r/w/o: 10581.27/3022.49/1512.40) lat (ms,95%): 34.95 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 16 tps: 554.12 qps: 11083.33 (r/w/o: 7758.23/2216.87/1108.23) lat (ms,95%): 56.84 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 16 tps: 381.00 qps: 7627.89 (r/w/o: 5339.39/1526.50/762.00) lat (ms,95%): 69.29 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 16 tps: 501.30 qps: 10025.48 (r/w/o: 7018.09/2004.80/1002.60) lat (ms,95%): 57.87 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 16 tps: 640.89 qps: 12814.60 (r/w/o: 8970.96/2561.86/1281.78) lat (ms,95%): 40.37 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 16 tps: 722.79 qps: 14452.51 (r/w/o: 10116.07/2890.96/1445.48) lat (ms,95%): 35.59 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            3563798
+        write:                           1018225
+        other:                           509117
+        total:                           5091140
+    transactions:                        254557 (707.06 per sec.)
+    queries:                             5091140 (14141.16 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0211s
+    total number of events:              254557
+
+Latency (ms):
+         min:                                    6.08
+         avg:                                   22.63
+         max:                                  677.53
+         95th percentile:                       38.94
+         sum:                              5759384.50
+
+Threads fairness:
+    events (avg/stddev):           15909.8125/777.22
+    execution time (avg/stddev):   359.9615/0.00
+
+****************************** 32 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=32  --percentile=95  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 32
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 32 tps: 826.16 qps: 16576.04 (r/w/o: 11606.06/3314.65/1655.32) lat (ms,95%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 32 tps: 816.06 qps: 16310.55 (r/w/o: 11421.71/3256.53/1632.32) lat (ms,95%): 63.32 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 32 tps: 790.20 qps: 15799.00 (r/w/o: 11059.00/3159.60/1580.40) lat (ms,95%): 66.84 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 32 tps: 837.60 qps: 16753.55 (r/w/o: 11727.54/3350.71/1675.31) lat (ms,95%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 32 tps: 836.98 qps: 16736.74 (r/w/o: 11713.68/3349.11/1673.95) lat (ms,95%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 32 tps: 818.12 qps: 16371.56 (r/w/o: 11459.15/3276.27/1636.14) lat (ms,95%): 64.47 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 32 tps: 827.22 qps: 16547.39 (r/w/o: 11587.17/3305.68/1654.54) lat (ms,95%): 64.47 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 32 tps: 837.69 qps: 16752.42 (r/w/o: 11726.11/3351.04/1675.27) lat (ms,95%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 32 tps: 797.70 qps: 15957.84 (r/w/o: 11169.32/3193.01/1595.50) lat (ms,95%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 32 tps: 831.38 qps: 16610.87 (r/w/o: 11628.07/3320.03/1662.77) lat (ms,95%): 61.08 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 32 tps: 836.53 qps: 16747.36 (r/w/o: 11722.96/3351.33/1673.07) lat (ms,95%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 32 tps: 766.77 qps: 15295.04 (r/w/o: 10699.91/3061.59/1533.54) lat (ms,95%): 70.55 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 32 tps: 829.29 qps: 16613.13 (r/w/o: 11635.31/3319.55/1658.27) lat (ms,95%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 32 tps: 816.73 qps: 16339.19 (r/w/o: 11437.41/3268.12/1633.66) lat (ms,95%): 64.47 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 32 tps: 786.19 qps: 15716.99 (r/w/o: 11001.42/3143.08/1572.49) lat (ms,95%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 32 tps: 761.07 qps: 15216.56 (r/w/o: 10650.63/3043.89/1522.05) lat (ms,95%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 32 tps: 756.71 qps: 15141.43 (r/w/o: 10600.19/3027.83/1513.41) lat (ms,95%): 68.05 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 32 tps: 740.54 qps: 14816.18 (r/w/o: 10372.75/2962.26/1481.18) lat (ms,95%): 73.13 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 32 tps: 699.99 qps: 13994.12 (r/w/o: 9794.31/2800.14/1399.67) lat (ms,95%): 92.42 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 32 tps: 788.29 qps: 15764.84 (r/w/o: 11032.89/3155.27/1576.68) lat (ms,95%): 65.65 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 32 tps: 766.80 qps: 15344.11 (r/w/o: 10744.14/3066.18/1533.79) lat (ms,95%): 71.83 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 32 tps: 801.33 qps: 16029.98 (r/w/o: 11221.70/3205.62/1602.66) lat (ms,95%): 65.65 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 32 tps: 852.87 qps: 17055.34 (r/w/o: 11937.91/3411.69/1705.74) lat (ms,95%): 58.92 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 32 tps: 739.91 qps: 14795.81 (r/w/o: 10355.57/2960.52/1479.71) lat (ms,95%): 77.19 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 32 tps: 825.70 qps: 16510.48 (r/w/o: 11559.48/3299.60/1651.40) lat (ms,95%): 63.32 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 32 tps: 832.00 qps: 16643.04 (r/w/o: 11646.93/3332.41/1663.70) lat (ms,95%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 32 tps: 770.19 qps: 15407.77 (r/w/o: 10785.91/3080.97/1540.89) lat (ms,95%): 70.55 err/s: 0.10 reconn/s: 0.00
+[ 280s ] thds: 32 tps: 842.01 qps: 16846.48 (r/w/o: 11793.20/3369.16/1684.13) lat (ms,95%): 59.99 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 32 tps: 811.29 qps: 16226.96 (r/w/o: 11357.90/3246.17/1622.89) lat (ms,95%): 63.32 err/s: 0.10 reconn/s: 0.00
+[ 300s ] thds: 32 tps: 809.49 qps: 16181.14 (r/w/o: 11330.79/3231.27/1619.08) lat (ms,95%): 65.65 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 32 tps: 825.52 qps: 16516.34 (r/w/o: 11559.34/3306.07/1650.93) lat (ms,95%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 32 tps: 814.91 qps: 16307.45 (r/w/o: 11414.01/3263.53/1629.92) lat (ms,95%): 62.19 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 32 tps: 794.38 qps: 15875.55 (r/w/o: 11115.48/3171.31/1588.75) lat (ms,95%): 69.29 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 32 tps: 601.62 qps: 12028.98 (r/w/o: 8420.24/2405.50/1203.25) lat (ms,95%): 118.92 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 32 tps: 530.69 qps: 10616.02 (r/w/o: 7428.30/2126.14/1061.57) lat (ms,95%): 123.28 err/s: 0.10 reconn/s: 0.00
+[ 360s ] thds: 32 tps: 774.40 qps: 15488.20 (r/w/o: 10846.13/3093.28/1548.79) lat (ms,95%): 71.83 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            3975720
+        write:                           1135911
+        other:                           567963
+        total:                           5679594
+    transactions:                        283977 (788.75 per sec.)
+    queries:                             5679594 (15775.18 per sec.)
+    ignored errors:                      3      (0.01 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.0317s
+    total number of events:              283977
+
+Latency (ms):
+         min:                                    8.24
+         avg:                                   40.57
+         max:                                  355.99
+         95th percentile:                       68.05
+         sum:                             11519758.24
+
+Threads fairness:
+    events (avg/stddev):           8874.2812/655.08
+    execution time (avg/stddev):   359.9924/0.01
+
+****************************** 64 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=64  --percentile=95  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 64
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 64 tps: 759.57 qps: 15285.77 (r/w/o: 10714.42/3045.80/1525.55) lat (ms,95%): 144.97 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 64 tps: 801.69 qps: 16061.19 (r/w/o: 11232.92/3224.88/1603.39) lat (ms,95%): 139.85 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 64 tps: 572.36 qps: 11426.75 (r/w/o: 8006.50/2275.33/1144.91) lat (ms,95%): 292.60 err/s: 0.10 reconn/s: 0.00
+[ 40s ] thds: 64 tps: 794.24 qps: 15894.46 (r/w/o: 11124.63/3181.35/1588.48) lat (ms,95%): 125.52 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 64 tps: 733.20 qps: 14614.28 (r/w/o: 10230.26/2917.72/1466.31) lat (ms,95%): 170.48 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 64 tps: 660.89 qps: 13236.92 (r/w/o: 9267.20/2647.94/1321.77) lat (ms,95%): 193.38 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 64 tps: 781.71 qps: 15648.49 (r/w/o: 10954.91/3130.06/1563.53) lat (ms,95%): 158.63 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 64 tps: 804.80 qps: 16084.02 (r/w/o: 11258.45/3215.98/1609.59) lat (ms,95%): 123.28 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 64 tps: 660.37 qps: 13192.39 (r/w/o: 9235.28/2636.48/1320.64) lat (ms,95%): 196.89 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 64 tps: 718.82 qps: 14389.69 (r/w/o: 10073.37/2878.68/1437.64) lat (ms,95%): 189.93 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 64 tps: 786.31 qps: 15738.37 (r/w/o: 11017.62/3148.03/1572.72) lat (ms,95%): 150.29 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 64 tps: 750.72 qps: 15005.71 (r/w/o: 10506.82/2997.56/1501.33) lat (ms,95%): 142.39 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 64 tps: 670.91 qps: 13458.52 (r/w/o: 9408.25/2708.14/1342.12) lat (ms,95%): 189.93 err/s: 0.10 reconn/s: 0.00
+[ 140s ] thds: 64 tps: 746.65 qps: 14857.49 (r/w/o: 10402.39/2961.80/1493.30) lat (ms,95%): 176.73 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 64 tps: 733.22 qps: 14696.14 (r/w/o: 10294.31/2935.39/1466.44) lat (ms,95%): 183.21 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 64 tps: 848.50 qps: 16992.22 (r/w/o: 11894.12/3401.10/1697.00) lat (ms,95%): 108.68 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 64 tps: 717.80 qps: 14330.04 (r/w/o: 10031.46/2863.09/1435.49) lat (ms,95%): 176.73 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 64 tps: 694.01 qps: 13874.85 (r/w/o: 9710.21/2776.63/1388.02) lat (ms,95%): 193.38 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 64 tps: 728.49 qps: 14583.08 (r/w/o: 10211.74/2914.16/1457.18) lat (ms,95%): 186.54 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 64 tps: 810.50 qps: 16219.50 (r/w/o: 11350.27/3248.12/1621.11) lat (ms,95%): 125.52 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 64 tps: 709.39 qps: 14159.91 (r/w/o: 9911.09/2830.24/1418.57) lat (ms,95%): 173.58 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 64 tps: 695.91 qps: 13931.51 (r/w/o: 9754.47/2785.22/1391.81) lat (ms,95%): 186.54 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 64 tps: 703.71 qps: 14069.85 (r/w/o: 9847.68/2814.55/1407.63) lat (ms,95%): 183.21 err/s: 0.00 reconn/s: 0.00
+[ 240s ] thds: 64 tps: 747.89 qps: 14962.27 (r/w/o: 10475.11/2991.17/1495.99) lat (ms,95%): 176.73 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 64 tps: 805.01 qps: 16130.35 (r/w/o: 11286.01/3234.43/1609.92) lat (ms,95%): 123.28 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 64 tps: 685.71 qps: 13688.67 (r/w/o: 9588.99/2728.15/1371.53) lat (ms,95%): 193.38 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 64 tps: 618.10 qps: 12355.01 (r/w/o: 8644.71/2474.10/1236.20) lat (ms,95%): 223.34 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 64 tps: 575.70 qps: 11558.52 (r/w/o: 8085.51/2321.60/1151.40) lat (ms,95%): 272.27 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 64 tps: 821.77 qps: 16395.80 (r/w/o: 11485.28/3267.28/1643.24) lat (ms,95%): 127.81 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 64 tps: 696.50 qps: 13946.73 (r/w/o: 9752.45/2800.79/1393.49) lat (ms,95%): 183.21 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 64 tps: 690.12 qps: 13777.62 (r/w/o: 9654.39/2742.98/1380.24) lat (ms,95%): 211.60 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 64 tps: 734.69 qps: 14692.55 (r/w/o: 10284.43/2938.75/1469.38) lat (ms,95%): 179.94 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 64 tps: 787.59 qps: 15765.95 (r/w/o: 11035.69/3155.07/1575.19) lat (ms,95%): 134.90 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 64 tps: 738.83 qps: 14814.15 (r/w/o: 10360.96/2975.53/1477.66) lat (ms,95%): 167.44 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 64 tps: 726.60 qps: 14533.85 (r/w/o: 10173.83/2906.61/1453.40) lat (ms,95%): 183.21 err/s: 0.10 reconn/s: 0.00
+[ 360s ] thds: 64 tps: 709.49 qps: 14181.66 (r/w/o: 9932.00/2830.67/1418.99) lat (ms,95%): 193.38 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            3672004
+        write:                           1049132
+        other:                           524578
+        total:                           5245714
+    transactions:                        262283 (728.34 per sec.)
+    queries:                             5245714 (14566.90 per sec.)
+    ignored errors:                      3      (0.01 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.1101s
+    total number of events:              262283
+
+Latency (ms):
+         min:                                    8.40
+         avg:                                   87.86
+         max:                                  822.67
+         95th percentile:                      176.73
+         sum:                             23045287.29
+
+Threads fairness:
+    events (avg/stddev):           4098.1719/36.72
+    execution time (avg/stddev):   360.0826/0.01
+
+****************************** 128 threads ******************************
+sysbench --db-driver=pgsql --pgsql-host=10.72.0.2 --pgsql-port=5432 --pgsql-user=sbtest --pgsql-password=DBPassword123 --pgsql-db=sbtest --table_size=10000000 --tables=10 --events=0 --time=360 --threads=128  --percentile=95  --report-interval=10 oltp_read_write run
+sysbench 1.0.20 (using bundled LuaJIT 2.1.0-beta2)
+
+Running the test with following options:
+Number of threads: 128
+Report intermediate results every 10 second(s)
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+[ 10s ] thds: 128 tps: 688.33 qps: 13958.90 (r/w/o: 9802.06/2767.10/1389.75) lat (ms,95%): 331.91 err/s: 0.10 reconn/s: 0.00
+[ 20s ] thds: 128 tps: 698.85 qps: 14029.57 (r/w/o: 9798.95/2832.82/1397.81) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 128 tps: 718.88 qps: 14368.24 (r/w/o: 10059.85/2870.33/1438.06) lat (ms,95%): 308.84 err/s: 0.10 reconn/s: 0.00
+[ 40s ] thds: 128 tps: 727.89 qps: 14507.87 (r/w/o: 10175.61/2876.77/1455.49) lat (ms,95%): 303.33 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 128 tps: 691.61 qps: 13884.32 (r/w/o: 9699.18/2801.62/1383.51) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 128 tps: 765.19 qps: 15285.75 (r/w/o: 10706.92/3048.65/1530.17) lat (ms,95%): 287.38 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 128 tps: 692.50 qps: 13774.44 (r/w/o: 9649.53/2739.41/1385.50) lat (ms,95%): 337.94 err/s: 0.20 reconn/s: 0.00
+[ 80s ] thds: 128 tps: 670.00 qps: 13504.09 (r/w/o: 9436.96/2727.02/1340.11) lat (ms,95%): 350.33 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 128 tps: 725.76 qps: 14344.29 (r/w/o: 10033.23/2859.24/1451.82) lat (ms,95%): 314.45 err/s: 0.10 reconn/s: 0.00
+[ 100s ] thds: 128 tps: 752.05 qps: 15132.36 (r/w/o: 10622.38/3005.89/1504.10) lat (ms,95%): 314.45 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 128 tps: 710.48 qps: 14226.49 (r/w/o: 9955.51/2849.82/1421.16) lat (ms,95%): 320.17 err/s: 0.10 reconn/s: 0.00
+[ 120s ] thds: 128 tps: 751.98 qps: 15051.94 (r/w/o: 10518.18/3029.81/1503.95) lat (ms,95%): 297.92 err/s: 0.00 reconn/s: 0.00
+[ 130s ] thds: 128 tps: 721.30 qps: 14456.69 (r/w/o: 10123.80/2890.10/1442.80) lat (ms,95%): 308.84 err/s: 0.00 reconn/s: 0.00
+[ 140s ] thds: 128 tps: 671.81 qps: 13422.94 (r/w/o: 9401.97/2677.35/1343.62) lat (ms,95%): 356.70 err/s: 0.00 reconn/s: 0.00
+[ 150s ] thds: 128 tps: 717.60 qps: 14273.71 (r/w/o: 9989.11/2850.70/1433.90) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 160s ] thds: 128 tps: 543.03 qps: 10868.95 (r/w/o: 7615.69/2166.01/1087.26) lat (ms,95%): 580.02 err/s: 0.00 reconn/s: 0.00
+[ 170s ] thds: 128 tps: 438.58 qps: 8843.10 (r/w/o: 6190.09/1775.34/877.67) lat (ms,95%): 733.00 err/s: 0.00 reconn/s: 0.00
+[ 180s ] thds: 128 tps: 708.09 qps: 14153.68 (r/w/o: 9917.45/2820.06/1416.18) lat (ms,95%): 320.17 err/s: 0.00 reconn/s: 0.00
+[ 190s ] thds: 128 tps: 760.55 qps: 15256.22 (r/w/o: 10653.81/3081.31/1521.10) lat (ms,95%): 303.33 err/s: 0.00 reconn/s: 0.00
+[ 200s ] thds: 128 tps: 729.67 qps: 14537.71 (r/w/o: 10173.32/2905.46/1458.93) lat (ms,95%): 308.84 err/s: 0.00 reconn/s: 0.00
+[ 210s ] thds: 128 tps: 782.10 qps: 15606.98 (r/w/o: 10946.96/3095.52/1564.51) lat (ms,95%): 303.33 err/s: 0.00 reconn/s: 0.00
+[ 220s ] thds: 128 tps: 685.42 qps: 13791.30 (r/w/o: 9637.38/2782.38/1371.54) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 230s ] thds: 128 tps: 662.88 qps: 13169.16 (r/w/o: 9234.46/2608.83/1325.87) lat (ms,95%): 350.33 err/s: 0.20 reconn/s: 0.00
+[ 240s ] thds: 128 tps: 712.60 qps: 14181.74 (r/w/o: 9909.13/2847.01/1425.60) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 250s ] thds: 128 tps: 710.39 qps: 14358.55 (r/w/o: 10060.50/2877.27/1420.79) lat (ms,95%): 314.45 err/s: 0.00 reconn/s: 0.00
+[ 260s ] thds: 128 tps: 673.09 qps: 13468.56 (r/w/o: 9423.60/2698.77/1346.19) lat (ms,95%): 344.08 err/s: 0.00 reconn/s: 0.00
+[ 270s ] thds: 128 tps: 703.40 qps: 13997.88 (r/w/o: 9810.35/2780.92/1406.61) lat (ms,95%): 325.98 err/s: 0.00 reconn/s: 0.00
+[ 280s ] thds: 128 tps: 708.90 qps: 14185.17 (r/w/o: 9930.88/2836.29/1418.00) lat (ms,95%): 308.84 err/s: 0.00 reconn/s: 0.00
+[ 290s ] thds: 128 tps: 689.22 qps: 13795.88 (r/w/o: 9664.97/2752.38/1378.54) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 300s ] thds: 128 tps: 743.99 qps: 14892.74 (r/w/o: 10417.79/2987.17/1487.78) lat (ms,95%): 303.33 err/s: 0.00 reconn/s: 0.00
+[ 310s ] thds: 128 tps: 703.81 qps: 14079.11 (r/w/o: 9842.88/2828.62/1407.61) lat (ms,95%): 331.91 err/s: 0.00 reconn/s: 0.00
+[ 320s ] thds: 128 tps: 662.00 qps: 13226.57 (r/w/o: 9265.98/2636.39/1324.20) lat (ms,95%): 344.08 err/s: 0.00 reconn/s: 0.00
+[ 330s ] thds: 128 tps: 686.70 qps: 13719.37 (r/w/o: 9614.78/2730.89/1373.70) lat (ms,95%): 325.98 err/s: 0.00 reconn/s: 0.00
+[ 340s ] thds: 128 tps: 710.51 qps: 14256.32 (r/w/o: 9966.98/2868.22/1421.11) lat (ms,95%): 320.17 err/s: 0.00 reconn/s: 0.00
+[ 350s ] thds: 128 tps: 670.99 qps: 13390.50 (r/w/o: 9382.06/2666.56/1341.88) lat (ms,95%): 344.08 err/s: 0.00 reconn/s: 0.00
+[ 360s ] thds: 128 tps: 711.21 qps: 14220.76 (r/w/o: 9953.01/2844.93/1422.82) lat (ms,95%): 337.94 err/s: 0.10 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            3516184
+        write:                           1004583
+        other:                           502335
+        total:                           5023102
+    transactions:                        251147 (697.07 per sec.)
+    queries:                             5023102 (13941.88 per sec.)
+    ignored errors:                      9      (0.02 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          360.2870s
+    total number of events:              251147
+
+Latency (ms):
+         min:                                    8.21
+         avg:                                  183.58
+         max:                                 1158.24
+         95th percentile:                      331.91
+         sum:                             46104869.72
+
+Threads fairness:
+    events (avg/stddev):           1962.0859/79.78
+    execution time (avg/stddev):   360.1943/0.04
