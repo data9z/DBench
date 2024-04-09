@@ -12,9 +12,9 @@ function run()
 {
     THREADS=$1
     
-    CMD="sysbench --db-driver=pgsql --pgsql-host=$DB_URL --pgsql-port=$DB_PORT --pgsql-user=$DB_USER --pgsql-password=$DB_PWD --pgsql-db=sbtest --table_size=$TABLE_SIZE --tables=10 --events=0 --time=360 --threads=$THREADS  --percentile=99  --report-interval=10 oltp_read_write run"
+    CMD="sysbench --db-driver=pgsql --pgsql-host=$DB_URL --pgsql-port=$DB_PORT --pgsql-user=$DB_USER --pgsql-password=$DB_PWD --pgsql-db=sbtest --table_size=$TABLE_SIZE --tables=10 --events=0 --time=360 --threads=$THREADS  --percentile=95  --report-interval=10 oltp_read_write run"
     echo "$CMD"
-    ssh -i ssh.pem -o StrictHostKeyChecking=no $USER@$HOST $CMD
+    ssh -i ssh.pem -p $PORT -o StrictHostKeyChecking=no $USER@$HOST $CMD
 }
 
 if [ "destroy" == $ACTION ] 
@@ -45,6 +45,10 @@ else [ "run" == $ACTION ]
     
     source $CLOUD/init.sh $REGION postgresql $TABLE_SIZE
 
+    echo "****************************** 4 threads ******************************"
+    sleep 30s; run 4
+    echo "****************************** 8 threads ******************************"
+    sleep 30s; run 8
     echo "****************************** 16 threads ******************************"
     sleep 30s; run 16
     echo "****************************** 32 threads ******************************"
@@ -53,10 +57,6 @@ else [ "run" == $ACTION ]
     sleep 30s; run 64
     echo "****************************** 128 threads ******************************"
     sleep 30s; run 128
-    echo "****************************** 256 threads ******************************"
-    sleep 30s; run 256
-    echo "****************************** 512 threads ******************************"
-    sleep 30s; run 512
 
     exit 0
 fi

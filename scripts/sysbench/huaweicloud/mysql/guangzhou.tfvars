@@ -1,7 +1,7 @@
 region = "cn-south-1"
 zone = "cn-south-1g"
 slave_zone = "cn-south-1f"
-db_instance_type = "rds.mysql.n1.xlarge.2.ha"
+db_instance_type = "rds.mysql.n1.xlarge.4.ha"
 db_disk_size = 100
 db_disk_type = "CLOUDSSD"
 db_user = "sbtest"

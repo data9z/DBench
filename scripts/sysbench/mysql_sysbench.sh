@@ -12,9 +12,9 @@ function run()
 {
     THREADS=$1
     
-    CMD="sysbench --db-driver=mysql --mysql-host=$DB_URL --mysql-port=$DB_PORT --mysql-user=$DB_USER --mysql-password=$DB_PWD --mysql-db=sbtest --table_size=$TABLE_SIZE --tables=10 --events=0 --time=360 --threads=$THREADS  --percentile=99  --report-interval=10 oltp_read_write run"
+    CMD="sysbench --db-driver=mysql --mysql-host=$DB_URL --mysql-port=$DB_PORT --mysql-user=$DB_USER --mysql-password=$DB_PWD --mysql-db=sbtest --table_size=$TABLE_SIZE --tables=10 --events=0 --time=360 --threads=$THREADS  --percentile=95  --report-interval=10 oltp_read_write run"
     echo "$CMD"
-    ssh -i ssh.pem -o StrictHostKeyChecking=no $USER@$HOST $CMD
+    ssh -i ssh.pem -p $PORT -o StrictHostKeyChecking=no $USER@$HOST $CMD
 }
 
 echo "Action : $ACTION"

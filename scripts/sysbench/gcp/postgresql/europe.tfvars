@@ -1,0 +1,11 @@
+project = "constant-land-412302"
+tag = "europepg"
+region = "europe-west3"
+zone = "europe-west3-c"
+slave_zone = "europe-west3-b"
+db_instance_type = "db-custom-4-16384"
+db_disk_size = 100
+db_disk_type = "PD_SSD"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+instance_type = "n2d-standard-2"

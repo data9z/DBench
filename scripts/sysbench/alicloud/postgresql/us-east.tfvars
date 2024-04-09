@@ -1,7 +1,7 @@
 region = "us-east-1"
 zone = "us-east-1b"
 slave_zone = "us-east-1a"
-db_instance_type = "pg.n2.4c.2m"
+db_instance_type = "pg.n4.4c.2m"
 db_disk_size = 100
 db_disk_type = "cloud_essd"
 db_user = "sbtest"

@@ -1,7 +1,7 @@
 region = "cn-north-4"
 zone = "cn-north-4g"
 slave_zone = "cn-north-4c"
-db_instance_type = "rds.pg.x1.xlarge.2.ha"
+db_instance_type = "rds.pg.n1.xlarge.4.ha"
 db_disk_size = 100
 db_disk_type = "CLOUDSSD"
 db_user = "sbtest"

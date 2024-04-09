@@ -1,7 +1,7 @@
 region = "cn-hongkong"
 zone = "cn-hongkong-d"
 slave_zone = "cn-hongkong-c"
-db_instance_type = "pg.n2.4c.2m"
+db_instance_type = "pg.n4.4c.2m"
 db_disk_size = 100
 db_disk_type = "cloud_essd"
 db_user = "sbtest"

@@ -1,7 +1,7 @@
 region = "ap-southeast-1"
 zone = "ap-southeast-1a"
 slave_zone = "ap-southeast-1a"
-db_instance_type = "rds.pg.n1.xlarge.2.ha"
+db_instance_type = "rds.pg.n1.xlarge.4.ha"
 db_disk_size = 100
 db_disk_type = "CLOUDSSD"
 db_user = "sbtest"

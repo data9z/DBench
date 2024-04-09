@@ -1,0 +1,10 @@
+region = "eu-central-1"
+zone = "eu-central-1b"
+slave_zone = "eu-central-1c"
+db_instance_type = "db.m5.xlarge"
+db_disk_size = 100
+db_disk_type = "gp2"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+cpu = 4096
+memory = 8192

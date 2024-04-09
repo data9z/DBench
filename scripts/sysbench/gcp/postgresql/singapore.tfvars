@@ -1,0 +1,11 @@
+project = "constant-land-412302"
+tag = "asiasoutheast1pg"
+region = "asia-southeast1"
+zone = "asia-southeast1-c"
+slave_zone = "asia-southeast1-b"
+db_instance_type = "db-custom-4-16384"
+db_disk_size = 100
+db_disk_type = "PD_SSD"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+instance_type = "custom-4-4096"

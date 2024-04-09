@@ -1,8 +1,8 @@
 region = "us-west-1"
 zone = "us-west-1b"
 slave_zone = "us-west-1a"
-db_instance_type = "rds.mysql.s3.large"
-db_disk_size = 200
+db_instance_type = "rds.mysql.m1.medium"
+db_disk_size = 100
 db_disk_type = "local_ssd"
 db_user = "sbtest"
 db_pwd = "DBPassword123"

@@ -1,0 +1,11 @@
+project = "constant-land-412302"
+tag = "useast4pg"
+region = "us-east4"
+zone = "us-east4-b"
+slave_zone = "us-east4-c"
+db_instance_type = "db-custom-4-16384"
+db_disk_size = 100
+db_disk_type = "PD_SSD"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+instance_type = "custom-4-4096"

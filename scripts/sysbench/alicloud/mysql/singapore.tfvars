@@ -1,7 +1,7 @@
 region = "ap-southeast-1"
 zone = "ap-southeast-1c"
 slave_zone = "ap-southeast-1b"
-db_instance_type = "rds.mysql.s3.large"
+db_instance_type = "rds.mysql.m1.medium"
 db_disk_size = 100
 db_disk_type = "local_ssd"
 db_user = "sbtest"

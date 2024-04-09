@@ -1,7 +1,7 @@
 region = "cn-guangzhou"
 zone = "cn-guangzhou-b"
 slave_zone = "cn-guangzhou-a"
-db_instance_type = "rds.mysql.s3.large"
+db_instance_type = "rds.mysql.m1.medium"
 db_disk_size = 100
 db_disk_type = "local_ssd"
 db_user = "sbtest"

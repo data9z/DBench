@@ -64,7 +64,7 @@ resource "huaweicloud_networking_secgroup_rule" "allow_host" {
   ethertype         = "IPv4"
   protocol          = "tcp"
   action            = "allow"
-  ports             = "22"
+  ports             = "22,9022"
   priority          = 1
   security_group_id = huaweicloud_networking_secgroup.security_group.id
   remote_ip_prefix  = var.ext_ip

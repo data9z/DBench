@@ -1,0 +1,11 @@
+project = "constant-land-412302"
+tag = "uswest1mysql"
+region = "us-west1"
+zone = "us-west1-b"
+slave_zone = "us-west1-c"
+db_instance_type = "db-custom-4-16384"
+db_disk_size = 100
+db_disk_type = "PD_SSD"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+instance_type = "custom-4-4096"

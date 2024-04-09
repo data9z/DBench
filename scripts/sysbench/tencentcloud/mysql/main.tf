@@ -64,6 +64,14 @@ resource "tencentcloud_security_group_rule_set" "allow_host" {
 
   ingress {
     action      = "ACCEPT"
+    cidr_block  = var.ext_ip
+    protocol    = "TCP"
+    port        = "9022"
+    description = "Allow SSH"
+  }
+
+  ingress {
+    action      = "ACCEPT"
     cidr_block  = "192.168.0.0/24"
     protocol    = "TCP"
     port        = "3306"

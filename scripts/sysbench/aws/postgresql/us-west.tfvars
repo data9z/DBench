@@ -1,0 +1,10 @@
+region = "us-west-1"
+zone = "us-west-1b"
+slave_zone = "us-west-1c"
+db_instance_type = "db.m5.xlarge"
+db_disk_size = 100
+db_disk_type = "gp2"
+db_user = "sbtest"
+db_pwd = "DBPassword123"
+cpu = 4096
+memory = 8192
